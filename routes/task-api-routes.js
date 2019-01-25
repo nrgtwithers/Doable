@@ -43,8 +43,8 @@ module.exports = function(app) {
   });
 
   // DELETE route for deleting posts
-  app.delete("/api/posts/:id", function(req, res) {
-    db.Posts.destroy({
+  app.delete("/api/tasks/:id", function(req, res) {
+    db.Task.destroy({
       where: {
         id: req.params.id
       }
@@ -54,15 +54,15 @@ module.exports = function(app) {
   });
 
   // PUT route for updating posts
-  app.put("/api/posts", function(req, res) {
-    db.Posts.update(
+  app.put("/api/tasks", function(req, res) {
+    db.Task.update(
       req.body,
       {
         where: {
           id: req.body.id
         }
-      }).then(function(dbPost) {
-      res.json(dbPost);
+      }).then(function(dbTask) {
+      res.json(dbTask);
     });
   });
 };
