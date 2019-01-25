@@ -42,7 +42,6 @@ module.exports = function(app) {
     });
   });
 
-  // DELETE route for deleting posts
   app.delete("/api/tasks/:id", function(req, res) {
     db.Task.destroy({
       where: {
@@ -53,7 +52,6 @@ module.exports = function(app) {
     });
   });
 
-  // PUT route for updating posts
   app.put("/api/tasks", function(req, res) {
     db.Task.update(
       req.body,
