@@ -1,4 +1,5 @@
 module.exports = function(sequelize, DataTypes){
+
     var Task = sequelize.define("Task",{
        title: {
            type: DataTypes.STRING,
@@ -9,7 +10,7 @@ module.exports = function(sequelize, DataTypes){
            allowNull: false,
        },
        rateOfPay: {
-           type: DataTypes.INT,
+           type: DataTypes.INTEGER,
            allowNull: false,
        },
        location: {
@@ -17,29 +18,26 @@ module.exports = function(sequelize, DataTypes){
         allowNull: false,
     },
     time: {
-        type: DataTypes.INT,
+        type: DataTypes.INTEGER,
         allowNull: true
     },
     status: {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
+    category: {
         type: DataTypes.STRING,
         allowNull: false
     }
     })
 
     Task.associate = function(models) {
-        Task.belongsTo(models.Hiring, {
+        Task.belongsTo(models.User, {
           foreignKey: {
             allowNull: false
           }
         });
       };
     
-      Task.associate = function(models) {
-        Task.belongsTo(models.Tasker, {
-          foreignKey: {
-            allowNull: false
-          }
-        });
-      };
       return Task;
 }
