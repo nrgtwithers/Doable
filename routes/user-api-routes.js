@@ -1,6 +1,15 @@
 var db = require("../models");
+var passport = require("passport");
 
 module.exports = function(app) {
+
+  app.get('/', function (req, res) {
+    db.User.findAll({}).then(function (data) {
+      console.log(data);
+        res.render("index", { task: data });
+      })
+    })
+
   app.get("/api/users", function(req, res) {
     db.User.findAll({ include: [ db.Task ] }).then(function(dbUser) {
       res.json(dbUser);
@@ -30,10 +39,10 @@ module.exports = function(app) {
 
   app.post("/api/signup", function(req, res) {
     console.log(req.body);
-    db.User.create({ // instead of db.user it should be db.(new table for sign up/log in)
-      email: req.body.email,
-      password: req.body.password
-    }).then(function() {
+    db.Signin.create( // instead of db.user it should be db.(new table for sign up/log in)
+     req.body
+    ).then(function() {
+      // res.json({hi: `hello`})
       res.redirect(307, "/api/login");
     }).catch(function(err) {
       console.log(err);

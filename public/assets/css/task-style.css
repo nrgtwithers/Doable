@@ -1,0 +1,117 @@
+/* Google Fonts */
+@import url('https://fonts.googleapis.com/css?family=Barlow');
+@import url('https://fonts.googleapis.com/css?family=Pacifico');
+
+html, body{
+/* background-color: white; */
+color: #7ed957;
+font-family: 'Barlow','Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+} 
+
+nav .nav-wrapper{
+background-color: white !important;
+
+}
+
+nav a {
+color: #7ed957 !important;
+}
+
+h1{
+    font-family: 'Pacifico', cursive;
+    font-weight: bold;
+    color: white !important;
+    text-shadow: 5px 5px rgb(38, 53, 53);
+}
+
+h2{
+    font-family: 'Pacifico', cursive;
+        font-weight: bold;
+}
+
+.header{
+    text-align: center;
+    font-family: 'Pacifico', cursive;
+}
+
+.iris {
+    background-image: url("");
+    background-repeat: no-repeat;
+    height: 100vh;
+    background-size: cover;
+    margin-top: 100px;
+}
+
+.search{
+    text-align: center;
+    margin-top: 100px;
+    margin: auto;
+    padding: 20px;
+    max-width: 600px;
+}
+
+input{
+    width: 80% !important;
+}
+
+.video{
+    margin: auto;
+    max-width: 600px;
+    text-align: center;
+    justify-content: center;
+}
+
+.todo-list {
+    margin: 0 auto;
+    margin-top: 75px;
+  }
+  
+  input.new-item:focus {
+    outline: none;
+  }
+  
+  .list-group-item > button.delete,
+  .list-group-item > button.complete {
+    float: right;
+    height: 25px;
+    margin-left: 5px;
+  }
+  
+  .edit {
+    width: 100%;
+  }
+  
+#testimonials{
+    background-color: #ffcc00;
+    /* opacity: 0.5; */
+    padding: 25px;
+    min-height: 600px;
+}
+
+  .contact-form{
+      background-color: #98f76f !important;
+      opacity: 0.9;
+      max-width: 700px;
+      /* height: 550px; */
+      margin: auto;
+      border-radius: 10px;
+      color: black !important;
+      font-family: 'Barlow', Arial, Helvetica, sans-serif;
+      line-height: 1.2em;
+  }
+ 
+#contact{
+    min-height: 650px;
+}
+
+  form{
+      color:black !important;
+      padding: 20px !important;
+  }
+
+  h3{
+      text-align: center;
+      color:white;
+      font-family: 'Pacifico', cursive;
+      font-weight: bold;
+  }
