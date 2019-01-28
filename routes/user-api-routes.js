@@ -1,8 +1,9 @@
 var db = require("../models");
+var passport = require("passport");
 
 module.exports = function(app) {
 
-  //wrapper function to check the property of existing objects (for testing purposes)
+
   function hasProp (obj, prop) {
     return Object.prototype.hasOwnProperty.call(obj, prop);
   }
@@ -17,6 +18,13 @@ module.exports = function(app) {
   res.render("index",hbsObj)
   });
   
+  app.get('/', function (req, res) {
+    db.User.findAll({}).then(function (data) {
+      console.log(data);
+        res.render("index", { task: data });
+      })
+    })
+
   app.get("/api/users", function(req, res) {
     db.User.findAll({ include: [ db.Task ] }).then(function(dbUser) {
       res.json(dbUser);
@@ -46,10 +54,10 @@ module.exports = function(app) {
 
   app.post("/api/signup", function(req, res) {
     console.log(req.body);
-    db.User.create({ // instead of db.user it should be db.(new table for sign up/log in)
-      email: req.body.email,
-      password: req.body.password
-    }).then(function() {
+    db.Signin.create( // instead of db.user it should be db.(new table for sign up/log in)
+     req.body
+    ).then(function() {
+      // res.json({hi: `hello`})
       res.redirect(307, "/api/login");
     }).catch(function(err) {
       console.log(err);
@@ -57,7 +65,7 @@ module.exports = function(app) {
     });
   });
 
-  app.post("/api/login", passport.authenticate("local"), function(req, res) {
+  app.get("/api/login", passport.authenticate("local"), function(req, res) {
     res.json("/users");
   });
 
