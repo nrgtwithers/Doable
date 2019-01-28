@@ -17,38 +17,35 @@
 </head>
 
 <body>
+
 	<nav>
 		<div class="nav-wrapper">
 
 			<a href="#" class="brand-logo"><img src="assets/images/DOABLE3.png" alt="logo" height="55px" width="190px"></a>
 			<a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
 			<ul id="nav-mobile" class="right hide-on-med-and-down">
-				<!-- Modal Trigger -->
 				<li><a class="waves-effect waves-light #e8f5e9 green lighten-5 btn modal-trigger" href="#modal1">
 						LOGIN/SIGN UP
 					</a></li>
-				{{!-- <li><a href="#login">LOGIN/SIGNUP</a></li> --}}
 				<li><a class="waves-effect waves-light #e8f5e9 green lighten-5 btn modal-trigger" href="#modal2">
 						BECOME A DOER
 					</a>
 				</li>
-				{{!-- <li><a href="#doer">BECOME A DOER</a></li> --}}
 				<li><a href="#how">HOW IT WORKS</a></li>
 				<li><a href="#testimonials">TESTIMONIALS</a></li>
 				<li><a href="#contact">CONTACT</a></li>
 			</ul>
 		</div>
 	</nav>
+
 	<ul class="sidenav" id="mobile-demo">
 		<li><a class="waves-effect waves-light #e8f5e9 green lighten-5 btn modal-trigger" href="#modal1">
 				LOGIN/SIGN UP
-			</a>
-		<li>
+			</a></li>
 		<li><a class="waves-effect waves-light #e8f5e9 green lighten-5 btn modal-trigger" href="#modal2">
 				BECOME A DOER
 			</a>
-		<li>
-			{{!-- <li><a href="#doer">BECOME A DOER</a></li> --}}
+		</li>
 		<li><a href="#how">HOW IT WORKS</a></li>
 		<li><a href="#testimonials">TESTIMONIALS</a></li>
 		<li><a href="#contact">CONTACT</a></li>
@@ -78,10 +75,7 @@
 	</div>
 	</div>
 
-	<!-- Modal Trigger -->
-	{{!-- <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Modal</a> --}}
-
-	<!-- Modal Structure CREATE -->
+	<!-- Modal 2 Structure CREATE -->
 	<div id="modal2" class="modal">
 		<div class="modal-content">
 			<h2>Become a Doer</h2>
@@ -133,16 +127,14 @@
 			</div>
 		</div>
 	</div>
+
 	{{{body}}}
-	<!-- Custom Script -->
+
 	{{!-- JS & JQUERY --}}
 	<script src="https://code.jquery.com/jquery.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-
+	<!-- Custom Script -->
 	<script src="assets/js/view.js"></script>
-	{{!--
-	<script src="" type="text/javascript"></script> --}}
-
 </body>
 
 </html>
