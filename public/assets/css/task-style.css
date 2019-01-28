@@ -92,7 +92,6 @@ input{
       background-color: #98f76f !important;
       opacity: 0.9;
       max-width: 700px;
-      /* height: 550px; */
       margin: auto;
       border-radius: 10px;
       color: black !important;
@@ -100,9 +99,9 @@ input{
       line-height: 1.2em;
   }
  
-#contact{
+/* #contact{
     min-height: 650px;
-}
+} */
 
   form{
       color:black !important;
