@@ -27,7 +27,6 @@ app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
 
-// require("./routes/html-routes.js")(app);
 require("./routes/task-api-routes.js")(app);
 require("./routes/user-api-routes.js")(app);
 

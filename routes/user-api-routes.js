@@ -1,6 +1,22 @@
 var db = require("../models");
 
 module.exports = function(app) {
+
+  //wrapper function to check the property of existing objects (for testing purposes)
+  function hasProp (obj, prop) {
+    return Object.prototype.hasOwnProperty.call(obj, prop);
+  }
+
+  //renders the landing page
+  app.get('/', (req, res) => {
+    if (hasProp(req, 'user')) {
+      var hbsObj = {
+          username: req.user.username
+      }
+  }
+  res.render("index",hbsObj)
+  });
+  
   app.get("/api/users", function(req, res) {
     db.User.findAll({ include: [ db.Task ] }).then(function(dbUser) {
       res.json(dbUser);
@@ -51,7 +67,7 @@ module.exports = function(app) {
         id: req.params.id
       }
     }).then(function(dbUser) {
-      res.json(dbUser);
+      res.redirect('/')
     });
   });
 
