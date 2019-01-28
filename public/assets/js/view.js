@@ -6,6 +6,7 @@ $(document).ready(function(){
     $('.sidenav').sidenav();
   });
 
+
   $("#search-button").on("click",function(){
     $.ajax("/api/tasks", {
       type: "GET",
@@ -13,3 +14,7 @@ $(document).ready(function(){
       console.log("search button clicked")
   })
   })
+
+  $(document).ready(function(){
+    $('.modal').modal();
+  });
