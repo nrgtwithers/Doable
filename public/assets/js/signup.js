@@ -2,13 +2,10 @@ $(function () {
     $("#sign-up").on("submit", function (event) {
         event.preventDefault();
 
-        var newUserData = {
+        var newUser = {
             name: $("#name").val().trim(),
             username: $("#user-name").val().trim(),
             location: $("#location").val().trim(),
-        }
-
-        var newUser = {
             email: $("#user-email").val().trim(),
             password: $("#password").val().trim(),
         }
@@ -16,7 +13,7 @@ $(function () {
         if (!newUser.email || !newUser.password) {
             return;
         }
-        signUpUser(newUser.email, newUser.password);
+        signUpUser(newUser);
         email.val("");
         password.val("");
 
@@ -29,12 +26,12 @@ $(function () {
         })
     })
 
-    function signUpUser(email, password) {
-        $.post("/api/signup", {
-            email: email,
-            password: password
+    function signUpUser(newUser) {
+        $.ajax("/api/signup", {
+            type: "POST",
+            data: newUser
         }).then(function (data) {
             window.location.replace(data);
-        }).catch(handleLoginErr);
+        }).catch(handleLoginErr);   
     }
 })

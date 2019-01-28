@@ -21,7 +21,7 @@ $(function () {
     });
 
     function loginUser(email, password) {
-        $.post("/api/login", {
+        $.get("/api/login", {
             email: email,
             password: password
         }).then(function (data) {

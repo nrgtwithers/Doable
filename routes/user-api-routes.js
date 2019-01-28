@@ -3,6 +3,21 @@ var passport = require("passport");
 
 module.exports = function(app) {
 
+
+  function hasProp (obj, prop) {
+    return Object.prototype.hasOwnProperty.call(obj, prop);
+  }
+
+  //renders the landing page
+  app.get('/', (req, res) => {
+    if (hasProp(req, 'user')) {
+      var hbsObj = {
+          username: req.user.username
+      }
+  }
+  res.render("index",hbsObj)
+  });
+  
   app.get('/', function (req, res) {
     db.User.findAll({}).then(function (data) {
       console.log(data);
@@ -50,7 +65,7 @@ module.exports = function(app) {
     });
   });
 
-  app.post("/api/login", passport.authenticate("local"), function(req, res) {
+  app.get("/api/login", passport.authenticate("local"), function(req, res) {
     res.json("/users");
   });
 
@@ -60,7 +75,7 @@ module.exports = function(app) {
         id: req.params.id
       }
     }).then(function(dbUser) {
-      res.json(dbUser);
+      res.redirect('/')
     });
   });
 

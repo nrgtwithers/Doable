@@ -1,4 +1,5 @@
 module.exports = function (sequelize, DataTypes) {
+
   var Task = sequelize.define('Task', {
     title: {
       type: DataTypes.STRING,
@@ -28,7 +29,7 @@ module.exports = function (sequelize, DataTypes) {
       type: DataTypes.STRING,
       allowNull: false
     }
-  })
+  });
 
   Task.associate = function (models) {
     Task.belongsTo(models.User, {

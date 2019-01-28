@@ -14,6 +14,15 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false
     }
   });
+
+  Signin.associate = function (models) {
+
+    Signin.belongsTo(models.User, {
+      foreignKey: {
+        allowNull: false
+      }
+    });
+};
   Signin.prototype.validPassword = function(password) {
     return bcrypt.compareSync(password, this.password);
   };
