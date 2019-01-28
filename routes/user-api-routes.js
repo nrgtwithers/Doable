@@ -1,5 +1,5 @@
 var db = require("../models");
-var passport = require("passport");
+var passport = require("../config/passport");
 
 module.exports = function(app) {
 
@@ -65,7 +65,7 @@ module.exports = function(app) {
     });
   });
 
-  app.get("/api/login", passport.authenticate("local"), function(req, res) {
+  app.post("/api/login", passport.authenticate("local"), function(req, res) {
     res.json("/users");
   });
 

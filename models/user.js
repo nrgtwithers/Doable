@@ -9,44 +9,28 @@ module.exports = function (sequelize, DataTypes) {
         },
         location: {
             type: DataTypes.STRING,
-            allowNull: false,
+            allowNull: true,
         },
         contact: {
             type: DataTypes.STRING,
             allowNull: false,
         },
-        rating: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-        },
         jobsHiring: {
             type: DataTypes.INTEGER,
-            allowNull: false
+            allowNull: true
         },
         jobsDone: {
             type: DataTypes.INTEGER,
-            allowNull: false
+            allowNull: true
         },
         specialty: {
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: true
         },
         status: {
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: true
         },
-        email: {
-            type: DataTypes.STRING,
-            allowNull: false,
-            unique: true,
-            validate: {
-                isEmail: true
-            }
-        },
-        password: {
-            type: DataTypes.STRING,
-            allowNull: false
-        }
     });
 
     User.associate = function (models) {
