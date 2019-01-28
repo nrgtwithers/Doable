@@ -1,13 +1,13 @@
-$(function () {
+$(document).ready(function() {
+
     $("#sign-up").on("submit", function (event) {
         event.preventDefault();
+      var  email=$("#user-email");
+      var password =$("#reate-password");
 
         var newUser = {
             name: $("#name").val().trim(),
-            username: $("#user-name").val().trim(),
-            location: $("#location").val().trim(),
-            email: $("#user-email").val().trim(),
-            password: $("#password").val().trim(),
+            contact: $("#create-name").val().trim(),
         }
 
         if (!newUser.email || !newUser.password) {
@@ -17,21 +17,30 @@ $(function () {
         email.val("");
         password.val("");
 
-
-        $.ajax("/api/users", {
-            type: "POST",
-            data: newUserData
-        }).then(function () {
-            console.log("new user: " + newUser)
-        })
+         
     })
 
-    function signUpUser(newUser) {
-        $.ajax("/api/signup", {
-            type: "POST",
-            data: newUser
-        }).then(function (data) {
-            window.location.replace(data);
-        }).catch(handleLoginErr);   
+    function signUpUser(newUser){
+        $.ajax("/api/signup/", {
+        type: "POST",
+        data: newUser
+    }).then(function () {
+        console.log("new user: " + newUser)
+        window.location.replace(data);
+    }).catch(handleLoginErr);  
     }
+
+    // function signUpUser(email,password) {
+    //     $.post("/api/signup", {
+    //         email: email,
+    //         password: password
+    //     }).then(function (data) {
+    //         window.location.replace(data);
+    //     }).catch(handleLoginErr);   
+    // }
+
+    function handleLoginErr(err) {
+        $("#alert .msg").text(err.responseJSON);
+        $("#alert").fadeIn(500);
+      }
 })

@@ -7,30 +7,47 @@ module.exports = function (sequelize, DataTypes) {
             type: DataTypes.STRING,
             allowNull: false,
         },
-        location: {
-            type: DataTypes.STRING,
-            allowNull: true,
-        },
+        // location: {
+        //     type: DataTypes.STRING,
+        //     allowNull: true,
+        //     defaultValue: "DC"
+        // },
         contact: {
             type: DataTypes.STRING,
             allowNull: false,
         },
-        jobsHiring: {
-            type: DataTypes.INTEGER,
-            allowNull: true
-        },
-        jobsDone: {
-            type: DataTypes.INTEGER,
-            allowNull: true
-        },
-        specialty: {
+        email: {
             type: DataTypes.STRING,
-            allowNull: true
+            allowNull: false,
+            unique: true,
+      validate: {
+        isEmail: true
+      }
         },
-        status: {
+        password: {
             type: DataTypes.STRING,
-            allowNull: true
+            allowNull: false,
         },
+        // jobsHiring: {
+        //     type: DataTypes.INTEGER,
+        //     allowNull: true,
+        //     defaultValue: 0
+        // },
+        // jobsDone: {
+        //     type: DataTypes.INTEGER,
+        //     allowNull: true,
+        //     defaultValue: 0
+        // },
+        // specialty: {
+        //     type: DataTypes.STRING,
+        //     allowNull: true,
+        //     defaultValue: ""
+        // },
+        // status: {
+        //     type: DataTypes.STRING,
+        //     allowNull: true,
+        //     defaultValue: ""
+        // },
     });
 
     User.associate = function (models) {
@@ -38,7 +55,15 @@ module.exports = function (sequelize, DataTypes) {
         User.hasMany(models.Task, {
             onDelete: "cascade"
         });
+
+        User.hasOne(models.Signin)
     };
 
+    User.prototype.validPassword = function(password) {
+        return bcrypt.compareSync(password, this.password);
+      };
+      User.hook("beforeCreate", function(User) {
+        User.password = bcrypt.hashSync(User.password, bcrypt.genSaltSync(10), null);
+      });
     return User;
 }
