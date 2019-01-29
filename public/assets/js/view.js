@@ -21,13 +21,13 @@ $(document).ready(function () {
 
 $('.dropdown-trigger').dropdown();
 
-$("#user").hide();
+// $("#user").hide();
 
 $(".modal-close").click(function () {
     // alert( "Handler for .click() called." );
-    // $(".modal1").hide();
-    // $(".modal2").hide();
-    // $("#testimonials").hide();
-    // $("#contact").hide();
+    $(".modal1").hide();
+    $(".modal2").hide();
+    $("#testimonials").hide();
+    $("#contact").hide();
     $("#user").show();
 });
