@@ -7,46 +7,47 @@ module.exports = function (sequelize, DataTypes) {
             type: DataTypes.STRING,
             allowNull: false,
         },
-        location: {
-            type: DataTypes.STRING,
-            allowNull: false,
-        },
+        // location: {
+        //     type: DataTypes.STRING,
+        //     allowNull: true,
+        //     defaultValue: "DC"
+        // },
         contact: {
             type: DataTypes.STRING,
             allowNull: false,
-        },
-        rating: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-        },
-        jobsHiring: {
-            type: DataTypes.INTEGER,
-            allowNull: false
-        },
-        jobsDone: {
-            type: DataTypes.INTEGER,
-            allowNull: false
-        },
-        specialty: {
-            type: DataTypes.STRING,
-            allowNull: false
-        },
-        status: {
-            type: DataTypes.STRING,
-            allowNull: false
         },
         email: {
             type: DataTypes.STRING,
             allowNull: false,
             unique: true,
-            validate: {
-                isEmail: true
-            }
+      validate: {
+        isEmail: true
+      }
         },
         password: {
             type: DataTypes.STRING,
-            allowNull: false
-        }
+            allowNull: false,
+        },
+        // jobsHiring: {
+        //     type: DataTypes.INTEGER,
+        //     allowNull: true,
+        //     defaultValue: 0
+        // },
+        // jobsDone: {
+        //     type: DataTypes.INTEGER,
+        //     allowNull: true,
+        //     defaultValue: 0
+        // },
+        // specialty: {
+        //     type: DataTypes.STRING,
+        //     allowNull: true,
+        //     defaultValue: ""
+        // },
+        // status: {
+        //     type: DataTypes.STRING,
+        //     allowNull: true,
+        //     defaultValue: ""
+        // },
     });
 
     User.associate = function (models) {
@@ -54,7 +55,15 @@ module.exports = function (sequelize, DataTypes) {
         User.hasMany(models.Task, {
             onDelete: "cascade"
         });
+
+        User.hasOne(models.Signin)
     };
 
+    User.prototype.validPassword = function(password) {
+        return bcrypt.compareSync(password, this.password);
+      };
+      User.hook("beforeCreate", function(User) {
+        User.password = bcrypt.hashSync(User.password, bcrypt.genSaltSync(10), null);
+      });
     return User;
 }

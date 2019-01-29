@@ -16,7 +16,6 @@ module.exports = function(sequelize, DataTypes) {
   });
 
   Signin.associate = function (models) {
-
     Signin.belongsTo(models.User, {
       foreignKey: {
         allowNull: false
