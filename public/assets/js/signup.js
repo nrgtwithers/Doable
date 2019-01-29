@@ -2,12 +2,14 @@ $(document).ready(function() {
 
     $("#sign-up").on("submit", function (event) {
         event.preventDefault();
-      var  email=$("#user-email");
-      var password =$("#reate-password");
+      var  email= $("#new-email");
+      var password = $("#new-password");
 
         var newUser = {
-            name: $("#name").val().trim(),
-            contact: $("#create-name").val().trim(),
+            name: $("#new-name").val().trim(),
+            contact: $("#new-contact").val().trim(),
+            email: email.val().trim(),
+            password: password.val().trim()
         }
 
         if (!newUser.email || !newUser.password) {
@@ -17,6 +19,7 @@ $(document).ready(function() {
         email.val("");
         password.val("");
 
+        console.log(newUser)
          
     })
 
@@ -29,15 +32,6 @@ $(document).ready(function() {
         window.location.replace(data);
     }).catch(handleLoginErr);  
     }
-
-    // function signUpUser(email,password) {
-    //     $.post("/api/signup", {
-    //         email: email,
-    //         password: password
-    //     }).then(function (data) {
-    //         window.location.replace(data);
-    //     }).catch(handleLoginErr);   
-    // }
 
     function handleLoginErr(err) {
         $("#alert .msg").text(err.responseJSON);
