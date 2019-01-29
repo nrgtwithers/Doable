@@ -5,65 +5,51 @@
 
     <div class="row">
         <div class="col s12 m6 l3">
-            <div class="card">
-                <div class="card-image">
-                    <img src="assets/images/user.png" alt="user" />
-                    {{!-- <span class="card-title">Card Title</span> --}}
-                </div>
-                <div class="card-content">
+            <div class="card small">
+                <div class="card-content white-text">
+                    <span class="card-title">Step One:</span>
+                    <img src="assets/images/user.png" class="steps" alt="user" />
+
                     <p>I am a very simple card. I am good at containing small bits of information.
                         I am convenient because I require little markup to use effectively.</p>
-                </div>
-                <div class="card-action">
-                    <a href="#">This is a link</a>
                 </div>
             </div>
         </div>
         <div class="col s12 m6 l3">
-            <div class="card">
-                <div class="card-image">
-                    <img src="assets/images/checklist.png" alt="job" />
-                    {{!-- <span class="card-title">Card Title</span> --}}
-                </div>
-                <div class="card-content">
+            <div class="card small">
+                <div class="card-content white-text">
+                    <span class="card-title">Step Two:</span>
+                    <img src="assets/images/checklist.png" class="steps" alt="job" />
+
                     <p>I am a very simple card. I am good at containing small bits of information.
                         I am convenient because I require little markup to use effectively.</p>
-                </div>
-                <div class="card-action">
-                    <a href="#">This is a link</a>
                 </div>
             </div>
         </div>
         <div class="col s12 m6 l3">
-            <div class="card">
-                <div class="card-image">
-                    <img src="assets/images/message.png" alt="message" />
-                    {{!-- <span class="card-title">Card Title</span> --}}
-                </div>
-                <div class="card-content">
+            <div class="card small">
+                <div class="card-content white-text">
+                    <span class="card-title">Step Three:</span>
+                    <img src="assets/images/message.png" class="steps" alt="job" />
+
                     <p>I am a very simple card. I am good at containing small bits of information.
                         I am convenient because I require little markup to use effectively.</p>
-                </div>
-                <div class="card-action">
-                    <a href="#">This is a link</a>
                 </div>
             </div>
         </div>
         <div class="col s12 m6 l3">
-            <div class="card">
-                <div class="card-image">
-                    <img src="assets/images/moolah.png" alt="money" />
-                    {{!-- <span class="card-title">Card Title</span> --}}
-                </div>
-                <div class="card-content">
+            <div class="card small">
+                <div class="card-content white-text">
+                    <span class="card-title">Step Four:</span>
+                    <img src="assets/images/moolah.png" class="steps" alt="job" />
+
                     <p>I am a very simple card. I am good at containing small bits of information.
                         I am convenient because I require little markup to use effectively.</p>
                 </div>
-                <div class="card-action">
-                    <a href="#">This is a link</a>
-                </div>
             </div>
         </div>
+
+    </div>
     </div>
 </section>
 
@@ -74,7 +60,44 @@
     <div class="video">
         <iframe width="660" height="415" src="https://www.youtube.com/embed/mA1_uPp1Uc0?controls=0" frameborder="0"
             allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+
+        <div class="row">
+
+            <div class="col s4">
+                <h6>Vanessa</h6>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star"></span>
+                <span class="fa fa-star"></span>
+                <p>"Just what I was looking for. You guys rock! I'm finally able to get so many little errands done at
+                    a reasonable price."</p>
+            </div>
+            <div class="col s4">
+                <h6>Brian</h6>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star"></span>
+                <span class="fa fa-star"></span>
+                <p>"Just what I was looking for. You guys rock! I'm finally able to get so many little errands done at
+                    a reasonable price."</p>
+            </div>
+            <div class="col s4">
+                <h6>Kevin</h6>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star"></span>
+                <span class="fa fa-star"></span>
+                <p>"Just what I was looking for. You guys rock! I'm finally able to get so many little errands done at
+                    a reasonable price."</p>
+            </div>
+
+        </div>
     </div>
+
 </section>
 
 <section id="contact">
@@ -86,12 +109,34 @@
             <div class="card transparent z-depth-5">
                 <div class="search">
                     <h1>Contact us</h1>
-                    {{!-- <input class="searchbar #ffffff white" type="text" placeholder="  Search....">
-                    <button class="btn waves-effect waves-light btn-large #4caf50 green" type="submit" name="action">
-                        <i class="fas fa-search"></i>
-                    </button> --}}
+                    <a href="mailto:ninarosewithers@gmail.com">
+                        <i class="far fa-envelope"></i>
+                    </a>
+                    {{!-- <a href="tel:+1-555-555-1212">555-555-1212</a> --}}
+                    <a href="tel:+1-555-555-1212">
+                        <i class="fas fa-phone-square"></i>
+                    </a>
                 </div>
             </div>
         </div>
+    </div>
+</section>
+
+<section id="user">
+    <div class="platform">
+        <h2>Welcome {{User.name}}!</h2>
+
+        <!-- Dropdown Trigger -->
+        <a class='dropdown-trigger #e8f5e9 green lighten-5 btn' href='#' data-target='dropdown1'>Viewing Options</a>
+
+        <!-- Dropdown Structure -->
+        <ul id='dropdown1' class='dropdown-content'>
+            <li><a href="#!">View as Hirer</a></li>
+            <li><a href="#!">View as Doer</a></li>
+        </ul>
+        <br>
+        <hr>
+        <br>
+        
     </div>
 </section>
