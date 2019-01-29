@@ -128,3 +128,25 @@ input{
       font-family: 'Pacifico', cursive;
       font-weight: bold;
   }
+
+.dropdown-trigger{
+    color: #98f76f !important;
+}
+
+.platform{
+    margin: auto;
+    text-align:center;
+    width: 800px;
+}
+
+.card-title{
+    font-family: 'Barlow', arial;
+    font-weight: bold;
+    color: #ffcc00;
+    text-align:center;
+}
+
+.steps{
+    justify-content: center;
+    text-align: center;
+}
