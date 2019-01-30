@@ -53,16 +53,9 @@ $(function () {
     })
 });
 
-// $("#user").hide();
-
-// $(".modal-close").click(function () {
-//     // alert( "Handler for .click() called." );
-//     $(".modal1").hide();
-//     $(".modal2").hide();
-//     $("#testimonials").hide();
-//     $("#contact").hide();
-//     $("#user").show();
-// });
+//allow for expand size of text areas
+$('#textarea1').val('New Text');
+M.textareaAutoResize($('#textarea1'));
 
 
 // Sign up form post request. I'll move this to a different file 
