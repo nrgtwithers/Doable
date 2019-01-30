@@ -1,7 +1,8 @@
+// parallax image background
 $(document).ready(function () {
     $('.parallax').parallax();
 });
-
+// when mobile nav bar becomes side bar
 $(document).ready(function () {
     $('.sidenav').sidenav();
 });
@@ -15,22 +16,53 @@ $("#search-button").on("click", function () {
     })
 })
 
+$("#login-button").on("click", function () {
+    $.ajax("/user", {
+        type: "GET",
+    }).then(function () {
+        console.log("on user page")
+    })
+})
+
+// MODAL 
 $(document).ready(function () {
     $('.modal').modal();
 });
 
+// DROP DOWN
 $('.dropdown-trigger').dropdown();
+
+// Carousel
+
+$(document).ready(function(){
+    $('.collapsible').collapsible();
+  });
+
+$(function () {
+    $("#hirer").hide();
+    $("#doer").hide();
+
+    $(".hirer").click(function () {
+        $("#hirer").show();
+        $('#doer').hide();
+    })
+
+    $(".doer").click(function () {
+        $("#doer").show();
+        $('#hirer').hide();
+    })
+});
 
 // $("#user").hide();
 
-$(".modal-close").click(function () {
-    // alert( "Handler for .click() called." );
-    $(".modal1").hide();
-    $(".modal2").hide();
-    $("#testimonials").hide();
-    $("#contact").hide();
-    $("#user").show();
-});
+// $(".modal-close").click(function () {
+//     // alert( "Handler for .click() called." );
+//     $(".modal1").hide();
+//     $(".modal2").hide();
+//     $("#testimonials").hide();
+//     $("#contact").hide();
+//     $("#user").show();
+// });
 
 
 // Sign up form post request. I'll move this to a different file 
