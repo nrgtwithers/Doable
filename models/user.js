@@ -7,11 +7,11 @@ module.exports = function (sequelize, DataTypes) {
             type: DataTypes.STRING,
             allowNull: false,
         },
-        // location: {
-        //     type: DataTypes.STRING,
-        //     allowNull: true,
-        //     defaultValue: "DC"
-        // },
+        location: {
+            type: DataTypes.STRING,
+            allowNull: true,
+            defaultValue: "DC"
+        },
         contact: {
             type: DataTypes.STRING,
             allowNull: false,

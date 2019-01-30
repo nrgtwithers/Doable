@@ -38,10 +38,7 @@ setInterval(function () {
 $('.carousel').carousel('next');
 }, 5000);
 
-//Collapsible
-$(document).ready(function(){
-    $('.collapsible').collapsible();
-  });
+
 
 //jQuery Animation Show/Hide
 $(function () {
@@ -96,7 +93,7 @@ $("#sign-up").on("click", function (event) {
       data: newUser
   }).then(function () {
       console.log("new user: " + newUser)
-      window.location.replace(data);
+    //   window.location.replace(data);
   }).catch(handleLoginErr);  
   }
 
@@ -136,10 +133,22 @@ var passwordInput = $("#password-login");
             password: password
         }).then(function (data) {
             window.location.replace(data);
+            // $.get("/api/users",{
+            //     data: email
+            // }).then(function(dbUser){
+            //     localStorage.setItem('id',dbUser.id)
+            // })
             localStorage.setItem('email', email);
         })
         // .catch(function (err) {
         //     console.log(err);
         // });
+
+        $.post("api/users", {
+            email: email
+        }).then(function(data){
+            console.log(data)
+            localStorage.setItem('id',data.id)
+        })
     }
 //---------------------------------------------------------------------------------------

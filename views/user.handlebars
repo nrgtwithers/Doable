@@ -63,7 +63,7 @@
                     </div>
                 </li>
                 <li>
-                    <div class="collapsible-header"><i class="material-icons">place</i>Upcoming Jobs in your Area</div>
+                    <div class="collapsible-header" id= "jobs-by-area"><i class="material-icons">place</i>Upcoming Jobs in your Area</div>
                     <div class="collapsible-body">
                         {{#each task }}
                         <div class="row">
@@ -110,56 +110,56 @@
                     <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
                 </li> --}}
                 <li>
-                    <div class="collapsible-header"><i class="material-icons">build</i>Post a Job</div>
+                    <div id ="post-job-form"class="collapsible-header"><i class="material-icons">build</i>Post a Job</div>
                     <div class="collapsible-body">
                         <span>
                             <div class="row">
                                 <form class="col s12">
                                     <div class="row">
                                         <div class="input-field col s12">
-                                            <textarea id="textarea1" class="materialize-textarea"></textarea>
-                                            <label for="textarea1">Title</label>
+                                            <textarea id="task-title" class="materialize-textarea"></textarea>
+                                            <label for="task-title">Title</label>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="input-field col s12">
-                                            <textarea id="textarea1" class="materialize-textarea"></textarea>
-                                            <label for="textarea1">Description</label>
+                                            <textarea id="task-des" class="materialize-textarea"></textarea>
+                                            <label for="task-des">Description</label>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="input-field col s12">
-                                            <textarea id="textarea1" class="materialize-textarea"></textarea>
-                                            <label for="textarea1">Rate of Pay</label>
+                                            <textarea id="task-rop" class="materialize-textarea"></textarea>
+                                            <label for="task-rop">Rate of Pay</label>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="input-field col s12">
-                                            <textarea id="textarea1" class="materialize-textarea"></textarea>
-                                            <label for="textarea1">Location</label>
+                                            <textarea id="task-location" class="materialize-textarea"></textarea>
+                                            <label for="task-location">Location</label>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="input-field col s12">
-                                            <textarea id="textarea1" class="materialize-textarea"></textarea>
-                                            <label for="textarea1">Time</label>
+                                            <textarea id="task-time" class="materialize-textarea"></textarea>
+                                            <label for="task-time">Time</label>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="input-field col s12">
-                                            <textarea id="textarea1" class="materialize-textarea"></textarea>
-                                            <label for="textarea1">Status</label>
+                                            <textarea id="task-status" class="materialize-textarea"></textarea>
+                                            <label for="task-status">Status</label>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="input-field col s12">
-                                            <textarea id="textarea1" class="materialize-textarea"></textarea>
-                                            <label for="textarea1">Category</label>
+                                            <textarea id="task-ctg" class="materialize-textarea"></textarea>
+                                            <label for="task-ctg">Category</label>
                                         </div>
                                     </div>
-                                    <button class="btn waves-effect waves-light #4caf50 green" type="submit" name="action">Submit
-                                        <i class="material-icons right">send</i>
-                                    </button>
+                    
+                                        <button id="post-job" type="submit">send</button>
+                                    
                                 </form>
                             </div>
                         </span>
