@@ -25,6 +25,7 @@ module.exports = function(app) {
       })
     })
 
+
   app.get("/api/users", function(req, res) {
     db.User.findAll({ include: [ db.Task ] }).then(function(dbUser) {
       res.json(dbUser);
@@ -38,12 +39,18 @@ module.exports = function(app) {
         id: req.params.id
       }
     }).then(function(dbUser) {
+      // res.render('home', {layout: login});
+      // res.render("user", { task: dbUser });
       res.json(dbUser);
     });
   });
 
 
-  //user log out
+  app.get('/user', function (req, res) {
+    res.render('user', {layout: 'login'});
+});
+
+
   app.get("/logout", function(req, res) {
     req.logout();
     res.redirect("/");
