@@ -32,6 +32,7 @@ module.exports = function(app) {
     });
   });
 
+
   app.get("/api/users/:id", function(req, res) {
     db.User.findOne({ include: [ db.Task ] },{
       where: {
@@ -44,15 +45,18 @@ module.exports = function(app) {
     });
   });
 
+
   app.get('/user', function (req, res) {
     res.render('user', {layout: 'login'});
 });
+
 
   app.get("/logout", function(req, res) {
     req.logout();
     res.redirect("/");
   });
 
+  //user sign up 
   app.post("/api/signup/", function(req, res) {
     db.User.create(req.body).then(function() {
       res.redirect(307, "/api/login");
@@ -62,24 +66,25 @@ module.exports = function(app) {
     });
   });
 
+ // edit user profile 
+  app.put("/api/users", function(req, res) {
+    db.User.update(
+      req.body,
+      {
+        where: {
+          id: req.body.id
+        }
+      }).then(function(dbPost) {
+      res.json(dbPost);
+    });
+  });
 
-  // app.post("/api/signup", function(req, res) {
-  //   console.log(req.body);
-  //   db.Signin.create( // instead of db.user it should be db.(new table for sign up/log in)
-  //   req.body
-  //   ).then(function() {
-  //     // res.json({hi: `hello`})
-  //     res.redirect(307, "/api/login");
-  //   }).catch(function(err) {
-  //     console.log(err);
-  //     res.json(err);
-  //   });
-  // });
-
+ // User login renders user page
   app.post("/api/login", passport.authenticate("local"), function(req, res) {
     res.json("/users");
   });
 
+// delete user 
   app.delete("/api/users/:id", function(req, res) {
     db.User.destroy({
       where: {
