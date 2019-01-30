@@ -135,6 +135,7 @@ var passwordInput = $("#password-login");
             console.log(data)
             localStorage.setItem('id',data.id)
             localStorage.setItem('location',data.location)
+            
         })
     }
 //---------------------------------------------------------------------------------------
