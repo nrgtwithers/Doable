@@ -5,22 +5,17 @@ module.exports = function (app) {
 
 
   // find tasks by location
-  app.get("/api/tasks/", function (req, res) {
-    db.User.findOne({
-        where: {
-          email: req.body.email
-        }
-      }).then(function (dbUser) {
-var location = dbUser.location;
-db.Task.findAll({
-  where:{
-    location:location
-  }
-}).then(function(dbTask){
-  res.json(dbTask);
-})      
-      });
+  app.post("/api/tasks/location", function (req, res) {
+    console.log(req.body)
+    db.Task.findAll({
+      where: {
+        location: req.body.location
+      }
+    }).then(function (tasks) {
+      res.json(tasks)
+    })
   });
+
 
 
   // find tasks by title
@@ -57,8 +52,8 @@ db.Task.findAll({
 
   //create a new task 
   app.post("/api/tasks", function (req, res) {
-      db.Task.create(req.body).then(function (dbTask) {
-        res.json(dbTask);
+    db.Task.create(req.body).then(function (dbTask) {
+      res.json(dbTask);
     })
   });
 

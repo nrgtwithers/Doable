@@ -5,12 +5,12 @@
     })
 
     $("#jobs-by-area").on("click",function(){
-      var email = localStorage.getItem('email')
-      $.ajax("/api/tasks", {
-        type: "GET",
-        data: email
-    }).then(function () {
-        console.log("looking for task")
+      var location = localStorage.getItem('location')
+      $.ajax("/api/tasks/location", {
+        type: "POST",
+        data: {location: location}
+    }).then(function (data) {
+        console.log(data)
     })
     })
 

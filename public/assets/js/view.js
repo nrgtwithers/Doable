@@ -16,13 +16,7 @@ $("#search-button").on("click", function () {
     })
 })
 
-// $("#login-button").on("click", function () {
-//     $.ajax("/api/login", {
-//         type: "GET",
-//     }).then(function () {
-//         console.log("on user page")
-//     })
-// })
+
 
 // MODAL 
 $(document).ready(function () {
@@ -140,6 +134,7 @@ var passwordInput = $("#password-login");
         }).then(function(data){
             console.log(data)
             localStorage.setItem('id',data.id)
+            localStorage.setItem('location',data.location)
         })
     }
 //---------------------------------------------------------------------------------------
