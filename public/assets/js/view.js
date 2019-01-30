@@ -16,13 +16,13 @@ $("#search-button").on("click", function () {
     })
 })
 
-$("#login-button").on("click", function () {
-    $.ajax("/user", {
-        type: "GET",
-    }).then(function () {
-        console.log("on user page")
-    })
-})
+// $("#login-button").on("click", function () {
+//     $.ajax("/api/login", {
+//         type: "GET",
+//     }).then(function () {
+//         console.log("on user page")
+//     })
+// })
 
 // MODAL 
 $(document).ready(function () {
@@ -33,11 +33,17 @@ $(document).ready(function () {
 $('.dropdown-trigger').dropdown();
 
 // Carousel
+$('.carousel').carousel();
+setInterval(function () {
+$('.carousel').carousel('next');
+}, 5000);
 
+//Collapsible
 $(document).ready(function(){
     $('.collapsible').collapsible();
   });
 
+//jQuery Animation Show/Hide
 $(function () {
     $("#hirer").hide();
     $("#doer").hide();
@@ -53,16 +59,9 @@ $(function () {
     })
 });
 
-// $("#user").hide();
-
-// $(".modal-close").click(function () {
-//     // alert( "Handler for .click() called." );
-//     $(".modal1").hide();
-//     $(".modal2").hide();
-//     $("#testimonials").hide();
-//     $("#contact").hide();
-//     $("#user").show();
-// });
+//allow for expand size of text areas
+$('#textarea1').val('New Text');
+M.textareaAutoResize($('#textarea1'));
 
 
 // Sign up form post request. I'll move this to a different file 
@@ -137,9 +136,10 @@ var passwordInput = $("#password-login");
             password: password
         }).then(function (data) {
             window.location.replace(data);
-            console.log("logged in")
-        }).catch(function (err) {
-            console.log(err);
-        });
+            localStorage.setItem('email', email);
+        })
+        // .catch(function (err) {
+        //     console.log(err);
+        // });
     }
 //---------------------------------------------------------------------------------------

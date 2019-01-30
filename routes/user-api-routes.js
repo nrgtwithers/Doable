@@ -18,12 +18,12 @@ module.exports = function(app) {
   res.render("index",hbsObj)
   });
   
-  app.get('/', function (req, res) {
-    db.User.findAll({}).then(function (data) {
-      console.log(data);
-        res.render("index", { task: data });
-      })
-    })
+  // app.get('/', function (req, res) {
+  //   db.User.findAll({}).then(function (data) {
+  //     console.log(data);
+  //       res.render("index", { task: data });
+  //     })
+  //   })
 
 
   app.get("/api/users", function(req, res) {
@@ -39,17 +39,21 @@ module.exports = function(app) {
         id: req.params.id
       }
     }).then(function(dbUser) {
-      // res.render('home', {layout: login});
-      // res.render("user", { task: dbUser });
+      res.render('user', {layout: 'login'});
+
       res.json(dbUser);
     });
   });
 
 
-  app.get('/user', function (req, res) {
-    res.render('user', {layout: 'login'});
-});
+ 
 
+// app.get("/user", function(req, res) {
+//   if (req.user) {
+//     res.redirect("/user");
+//   }
+//   res.render('user', {layout: 'login'});
+// });
 
   app.get("/logout", function(req, res) {
     req.logout();
@@ -78,11 +82,29 @@ module.exports = function(app) {
       res.json(dbPost);
     });
   });
-
+  
+var email;
+var userObj;
  // User login renders user page
   app.post("/api/login", passport.authenticate("local"), function(req, res) {
-    res.json("/users");
+     email = req.body.email;
+    res.json(`/user`);
+
   });
+
+  app.get(`/user`, function (req, res) {
+    console.log(email)
+var userData;
+    db.User.findOne({
+      where: {
+        email: email
+      }
+    }).then(function(dbUser) {
+console.log(dbUser.name)
+userData = dbUser;
+    });
+    res.render('user',{layout: 'login', data: userData });//{layout: 'login'}
+});
 
 // delete user 
   app.delete("/api/users/:id", function(req, res) {
