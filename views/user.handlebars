@@ -3,10 +3,13 @@
         <h2>Welcome {{this.name}}!</h2>
 
         <p>Please choose from one of the following:</p>
-          {{!-- <button class=" hirerbtn waves-effect #33691e light-green darken-4 waves-light" name="action">View as Hirer
-  </button> --}}
-        <button placeholder="View as Hirer" class="hirer #FFFFFF white waves-effect waves-light btn-small" href="">View as Hirer</button>
-        <button placeholder="View as Doer" class="doer #FFFFFF white waves-effect waves-light btn-small" href="">View as Doer</button>
+        {{!-- <button class=" hirerbtn waves-effect #33691e light-green darken-4 waves-light" name="action">View as
+            Hirer
+        </button> --}}
+        <button placeholder="View as Hirer" class="hirer #FFFFFF white waves-effect waves-light btn-small" href="">View
+            as Hirer</button>
+        <button placeholder="View as Doer" class="doer #FFFFFF white waves-effect waves-light btn-small" href="">View
+            as Doer</button>
 
 
         <!-- Dropdown Trigger -->
@@ -26,24 +29,65 @@
                 <li>
                     <div class="collapsible-header"><i class="material-icons">assignment_ind</i>View / Edit your
                         Profile</div>
-                    <div class="collapsible-body"><span></span></div>
+                    <div class="collapsible-body"><span>
+                            {{this.name}}
+                            {{this.location}}
+                            {{this.email}}
+                        </span></div>
                 </li>
-                <li>
+                {{!-- <li>
                     <div class="collapsible-header"><i class="material-icons">announcement</i>Messages</div>
                     <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
-                </li>
+                </li> --}}
                 <li>
                     <div class="collapsible-header"><i class="material-icons">event_available</i>Current Jobs status</div>
-                    <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+                    <div class="collapsible-body">
+                        {{#each task }}
+                        <div class="row">
+                            <div class="col s12 m6">
+                                <div class="card #4caf50 green">
+                                    <div class="card-content white-text">
+                                        <span class="card-title">Card Title</span>
+                                        <p>Title: {{task.title}}</p>
+                                        <p>Description: {{task.description}}</p>
+                                        <p>Location: {{task.location}}</p>
+                                        <p>Status: {{task.status}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {{/each}}
+                    </div>
                 </li>
                 <li>
                     <div class="collapsible-header"><i class="material-icons">place</i>Upcoming Jobs in your Area</div>
-                    <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+                    <div class="collapsible-body">
+                        {{#each task }}
+                        <div class="row">
+                            <div class="col s12 m6">
+                                <div class="card #4caf50 green">
+                                    <div class="card-content white-text">
+                                        <span class="card-title">Card Title</span>
+                                        <p>Title: {{task.title}}</p>
+                                        <p>Description: {{task.description}}</p>
+                                        <p>Rate of Pay: {{task.status}}</p>
+                                        <p>Location: {{task.location}}</p>
+                                        <p>Status: {{task.status}}
+                                            {{!-- moment.js --}}
+                                        </p>
+                                        <p>Time: {{task.time}}</p>
+                                         <p>Category: {{task.category}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {{/each}}
+                    </div>
                 </li>
-                <li>
+                {{!-- <li>
                     <div class="collapsible-header"><i class="material-icons">grade</i>Ratings</div>
                     <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
-                </li>
+                </li> --}}
             </ul>
         </div>
         <div id="hirer">
@@ -54,28 +98,105 @@
                     <div class="collapsible-body">
                         {{this.name}}
                         {{this.location}}
+                        {{this.email}}
+                    </div>
+                </li>
+                {{!-- <li>
+                    <div class="collapsible-header"><i class="material-icons">announcement</i>Messages</div>
+                    <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+                </li> --}}
+                <li>
+                    <div class="collapsible-header"><i class="material-icons">build</i>Post a Job</div>
+                    <div class="collapsible-body">
+                        <span>
+                            <div class="row">
+                                <form class="col s12">
+                                    <div class="row">
+                                        <div class="input-field col s12">
+                                            <textarea id="textarea1" class="materialize-textarea"></textarea>
+                                            <label for="textarea1">Title</label>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="input-field col s12">
+                                            <textarea id="textarea1" class="materialize-textarea"></textarea>
+                                            <label for="textarea1">Description</label>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="input-field col s12">
+                                            <textarea id="textarea1" class="materialize-textarea"></textarea>
+                                            <label for="textarea1">Rate of Pay</label>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="input-field col s12">
+                                            <textarea id="textarea1" class="materialize-textarea"></textarea>
+                                            <label for="textarea1">Location</label>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="input-field col s12">
+                                            <textarea id="textarea1" class="materialize-textarea"></textarea>
+                                            <label for="textarea1">Time</label>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="input-field col s12">
+                                            <textarea id="textarea1" class="materialize-textarea"></textarea>
+                                            <label for="textarea1">Status</label>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="input-field col s12">
+                                            <textarea id="textarea1" class="materialize-textarea"></textarea>
+                                            <label for="textarea1">Category</label>
+                                        </div>
+                                    </div>
+                                    <button class="btn waves-effect waves-light #4caf50 green" type="submit" name="action">Submit
+                                        <i class="material-icons right">send</i>
+                                    </button>
+                                </form>
+                            </div>
+                        </span>
                     </div>
                 </li>
                 <li>
-                    <div class="collapsible-header"><i class="material-icons">announcement</i>Messages</div>
-                    <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
-                </li>
-                <li>
-                    <div class="collapsible-header"><i class="material-icons">build</i>Post a Job</div>
-                    <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
-                </li>
-                <li>
                     <div class="collapsible-header"><i class="material-icons">event_available</i>Current Jobs status</div>
-                    <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+                    <div class="collapsible-body">
+                        {{#each task }}
+                        <div class="row">
+                            <div class="col s12 m6">
+                                <div class="card #4caf50 green">
+                                    <div class="card-content white-text">
+                                        <span class="card-title">Card Title</span>
+                                        <p>Title: {{task.title}}</p>
+                                        <p>Description: {{task.description}}</p>
+                                        <p>Location: {{task.location}}</p>
+                                        <p>Status: {{task.status}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {{/each}}
+                    </div>
                 </li>
                 <li>
                     <div class="collapsible-header"><i class="material-icons">face</i>Find a Doer</div>
-                    <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+                    <div class="collapsible-body"><span>
+                            <div class="search">
+                                <h5>Find the best Doer for you</h5>
+                                <input class="searchbar #ffffff white" type="text" placeholder="">
+                                <button class="btn waves-effect waves-light btn-small #4caf50 green" type="submit" name="action">
+                                    <i class="fas fa-search"></i>
+                                </button>
+                            </div>
+                        </span></div>
                 </li>
-                <li>
+                {{!-- <li>
                     <div class="collapsible-header"><i class="material-icons">grade</i>Ratings</div>
                     <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
-                </li>
+                </li> --}}
             </ul>
 
             <a href="/signout.html">Sign out</a>
