@@ -156,6 +156,10 @@ h3 {
   color: white;
 }
 
+.video{
+    padding: 25px;
+}
+
 .card-content p {
   color: #ffcc00;
 }

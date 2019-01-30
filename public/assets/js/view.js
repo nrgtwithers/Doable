@@ -33,11 +33,17 @@ $(document).ready(function () {
 $('.dropdown-trigger').dropdown();
 
 // Carousel
+$('.carousel').carousel();
+setInterval(function () {
+$('.carousel').carousel('next');
+}, 5000);
 
+//Collapsible
 $(document).ready(function(){
     $('.collapsible').collapsible();
   });
 
+//jQuery Animation Show/Hide
 $(function () {
     $("#hirer").hide();
     $("#doer").hide();

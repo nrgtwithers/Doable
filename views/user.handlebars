@@ -1,6 +1,6 @@
 <section id="user">
     <div class="platform">
-        <h2>Welcome {{this.name}}!</h2>
+        <h2>Welcome {{name}}!</h2>
 
         <p>Please choose from one of the following:</p>
         {{!-- <button class=" hirerbtn waves-effect #33691e light-green darken-4 waves-light" name="action">View as
@@ -30,6 +30,7 @@
                     <div class="collapsible-header"><i class="material-icons">assignment_ind</i>View / Edit your
                         Profile</div>
                     <div class="collapsible-body"><span>
+                            <img src={{this.user.image}}>
                             {{this.name}}
                             {{this.location}}
                             {{this.email}}
@@ -76,7 +77,7 @@
                                             {{!-- moment.js --}}
                                         </p>
                                         <p>Time: {{task.time}}</p>
-                                         <p>Category: {{task.category}}</p>
+                                        <p>Category: {{task.category}}</p>
                                     </div>
                                 </div>
                             </div>
@@ -96,6 +97,7 @@
                     <div class="collapsible-header"><i class="material-icons">assignment_ind</i>View / Edit your
                         Profile</div>
                     <div class="collapsible-body">
+                        <img src={{this.user.image}}>
                         {{this.name}}
                         {{this.location}}
                         {{this.email}}
@@ -199,6 +201,6 @@
                 </li> --}}
             </ul>
 
-            <a href="/signout.html">Sign out</a>
+            <a href="/">SIGN OUT</a>
         </div>
     </div>
