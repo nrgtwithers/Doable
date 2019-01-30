@@ -39,8 +39,8 @@ module.exports = function(app) {
         id: req.params.id
       }
     }).then(function(dbUser) {
-      // res.render('home', {layout: login});
-      // res.render("user", { task: dbUser });
+      res.render('user', {layout: 'login'});
+
       res.json(dbUser);
     });
   });
@@ -48,6 +48,12 @@ module.exports = function(app) {
 
  
 
+// app.get("/user", function(req, res) {
+//   if (req.user) {
+//     res.redirect("/user");
+//   }
+//   res.render('user', {layout: 'login'});
+// });
 
   app.get("/logout", function(req, res) {
     req.logout();
@@ -81,8 +87,12 @@ var email;
 var userObj;
  // User login renders user page
   app.post("/api/login", passport.authenticate("local"), function(req, res) {
+<<<<<<< HEAD
      email = req.body.email;
     res.json(`/user`);
+=======
+    res.json("/user");
+>>>>>>> 0e6db38d4371f64ce8259153224dfa8ed258a3ef
   });
 
   app.get(`/user`, function (req, res) {

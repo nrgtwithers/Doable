@@ -33,11 +33,17 @@ $(document).ready(function () {
 $('.dropdown-trigger').dropdown();
 
 // Carousel
+$('.carousel').carousel();
+setInterval(function () {
+$('.carousel').carousel('next');
+}, 5000);
 
+//Collapsible
 $(document).ready(function(){
     $('.collapsible').collapsible();
   });
 
+//jQuery Animation Show/Hide
 $(function () {
     $("#hirer").hide();
     $("#doer").hide();
@@ -53,16 +59,9 @@ $(function () {
     })
 });
 
-// $("#user").hide();
-
-// $(".modal-close").click(function () {
-//     // alert( "Handler for .click() called." );
-//     $(".modal1").hide();
-//     $(".modal2").hide();
-//     $("#testimonials").hide();
-//     $("#contact").hide();
-//     $("#user").show();
-// });
+//allow for expand size of text areas
+$('#textarea1').val('New Text');
+M.textareaAutoResize($('#textarea1'));
 
 
 // Sign up form post request. I'll move this to a different file 
