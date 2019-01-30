@@ -16,13 +16,7 @@ $("#search-button").on("click", function () {
     })
 })
 
-// $("#login-button").on("click", function () {
-//     $.ajax("/api/login", {
-//         type: "GET",
-//     }).then(function () {
-//         console.log("on user page")
-//     })
-// })
+
 
 // MODAL 
 $(document).ready(function () {
@@ -38,10 +32,7 @@ setInterval(function () {
 $('.carousel').carousel('next');
 }, 5000);
 
-//Collapsible
-$(document).ready(function(){
-    $('.collapsible').collapsible();
-  });
+
 
 //jQuery Animation Show/Hide
 $(function () {
@@ -96,7 +87,7 @@ $("#sign-up").on("click", function (event) {
       data: newUser
   }).then(function () {
       console.log("new user: " + newUser)
-      window.location.replace(data);
+    //   window.location.replace(data);
   }).catch(handleLoginErr);  
   }
 
@@ -138,8 +129,12 @@ var passwordInput = $("#password-login");
             window.location.replace(data);
             localStorage.setItem('email', email);
         })
-        // .catch(function (err) {
-        //     console.log(err);
-        // });
+        $.post("api/users", {
+            email: email
+        }).then(function(data){
+            console.log(data)
+            localStorage.setItem('id',data.id)
+            localStorage.setItem('location',data.location)
+        })
     }
 //---------------------------------------------------------------------------------------
