@@ -16,13 +16,13 @@ $("#search-button").on("click", function () {
     })
 })
 
-$("#login-button").on("click", function () {
-    $.ajax("/user", {
-        type: "GET",
-    }).then(function () {
-        console.log("on user page")
-    })
-})
+// $("#login-button").on("click", function () {
+//     $.ajax("/api/login", {
+//         type: "GET",
+//     }).then(function () {
+//         console.log("on user page")
+//     })
+// })
 
 // MODAL 
 $(document).ready(function () {
@@ -137,9 +137,10 @@ var passwordInput = $("#password-login");
             password: password
         }).then(function (data) {
             window.location.replace(data);
-            console.log("logged in")
-        }).catch(function (err) {
-            console.log(err);
-        });
+            localStorage.setItem('email', email);
+        })
+        // .catch(function (err) {
+        //     console.log(err);
+        // });
     }
 //---------------------------------------------------------------------------------------
