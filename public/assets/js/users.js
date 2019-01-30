@@ -14,11 +14,10 @@
     })
     })
 
-    $(document).ready(function(){
-      $("#post-job-form").on("submit",function(event){
+  
+      $("#post-job").on("click",function(event){
         console.log("clicked")
         event.preventDefault();
-        var email = localStorage.getItem('email');
         var newTask = {
           title: $("#task-title").val().trim(),
           description: $("#task-des").val().trim(),
@@ -27,8 +26,7 @@
           time: $("#task-time").val().trim(),
           status: $("#task-status").val().trim(),
           category: $("#task-ctg").val().trim(),
-          userEmail: email,
-          UserId: 0
+          UserId: localStorage.getItem("id")
         }
   
         $.ajax("/api/tasks", {
@@ -38,7 +36,7 @@
           console.log("looking for task")
       })
       })
-    })
+
     
 
     //Collapsible

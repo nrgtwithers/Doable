@@ -32,28 +32,6 @@ module.exports = function (app) {
   });
 
 
-  // app.get("/api/users", function(req, res) {
-  //   db.User.findOne({ include: [ db.Task ] },{
-  //     where: {
-  //       id: req.params.id
-  //     }
-  //   }).then(function(dbUser) {
-  //     res.render('user', {layout: 'login'});
-
-  //     res.json(dbUser);
-  //   });
-  // });
-
-
-
-
-  // app.get("/user", function(req, res) {
-  //   if (req.user) {
-  //     res.redirect("/user");
-  //   }
-  //   res.render('user', {layout: 'login'});
-  // });
-
   app.get("/logout", function (req, res) {
     req.logout();
     res.redirect("/");

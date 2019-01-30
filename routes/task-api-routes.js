@@ -57,16 +57,8 @@ db.Task.findAll({
 
   //create a new task 
   app.post("/api/tasks", function (req, res) {
-
-    db.User.findOne({
-      where: {
-        email: req.body.userEmail
-      }
-    }).then(function(dbUser){
-      req.body.UserId = dbUser.id
       db.Task.create(req.body).then(function (dbTask) {
         res.json(dbTask);
-      });
     })
   });
 

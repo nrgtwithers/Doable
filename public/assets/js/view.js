@@ -133,17 +133,8 @@ var passwordInput = $("#password-login");
             password: password
         }).then(function (data) {
             window.location.replace(data);
-            // $.get("/api/users",{
-            //     data: email
-            // }).then(function(dbUser){
-            //     localStorage.setItem('id',dbUser.id)
-            // })
             localStorage.setItem('email', email);
         })
-        // .catch(function (err) {
-        //     console.log(err);
-        // });
-
         $.post("api/users", {
             email: email
         }).then(function(data){
