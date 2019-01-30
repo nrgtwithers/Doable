@@ -87,12 +87,9 @@ var email;
 var userObj;
  // User login renders user page
   app.post("/api/login", passport.authenticate("local"), function(req, res) {
-<<<<<<< HEAD
      email = req.body.email;
     res.json(`/user`);
-=======
-    res.json("/user");
->>>>>>> 0e6db38d4371f64ce8259153224dfa8ed258a3ef
+
   });
 
   app.get(`/user`, function (req, res) {
