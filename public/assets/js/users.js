@@ -9,6 +9,11 @@ $("#sign-out").on("click", function () {
   location.href = '/';
 });
 
+$("#sign-out2").on("click", function () {
+  localStorage.setItem("email", "signed out");
+  location.href = '/';
+});
+
 // jobs by area for doer 
 $("#jobs-by-area").on("click", function () {
   var location = localStorage.getItem('location');
