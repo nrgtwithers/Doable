@@ -60,6 +60,23 @@
         $("#edit-specialty").text(data.specialty);
       })
     })
+
+    $("#update-info").on("click",function(){
+
+      var infoUpdate = {
+        name: $("#edit-name").val().trim(),
+        location: $("#edit-location").val().trim(),
+        contact: $("#edit-contact").val().trim(),
+        specialty: $("#edit-specialty").val().trim(),
+        id: localStorage.getItem("id")
+      }
+      $.ajax("api/userinfo",{
+        type: "PUT",
+        data: infoUpdate
+      }).then(function(data){
+        console.log(data);
+      });
+    });
   
       $("#post-job").on("click",function(event){
         console.log("clicked")

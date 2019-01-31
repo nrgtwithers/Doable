@@ -41,6 +41,16 @@ module.exports = function (app) {
     })
   })
 
+  app.put("/api/userinfo",function(req,res){
+    db.User.update(req.body, {
+      where: {
+        id: req.body.id
+      }
+    }).then(function(dbUser){
+      res.json(dbUser);
+      console.log(dbUser)
+    });
+  });
 
   app.get("/logout", function (req, res) {
     req.logout();
