@@ -31,22 +31,22 @@ module.exports = function (app) {
     });
   });
 
-  app.post("/api/userinfo",function(req,res){
+  app.post("/api/userinfo", function (req, res) {
     db.User.findOne({
       where: {
         id: req.body.id
       }
-    }).then(function(dbUser){
+    }).then(function (dbUser) {
       res.json(dbUser)
     })
   })
 
-  app.put("/api/userinfo",function(req,res){
+  app.put("/api/userinfo", function (req, res) {
     db.User.update(req.body, {
       where: {
         id: req.body.id
       }
-    }).then(function(dbUser){
+    }).then(function (dbUser) {
       res.json(dbUser);
       console.log(dbUser)
     });
@@ -81,12 +81,11 @@ module.exports = function (app) {
   });
 
   var email;
-  var userObj;
+
   // User login renders user page
   app.post("/api/login", passport.authenticate("local"), function (req, res) {
     email = req.body.email;
     res.json(`/user`);
-
   });
 
   app.get(`/user`, function (req, res) {
@@ -112,6 +111,17 @@ module.exports = function (app) {
     }).then(function (dbUser) {
       res.redirect('/')
     });
+  });
+
+  //find task owner 
+  app.post("/api/user/view", function (req, res) {
+    db.User.findOne({
+      where: {
+        id: req.body.id
+      }
+    }).then(function (dbUser) {
+      res.json(dbUser)
+    })
   });
 
 };

@@ -85,11 +85,21 @@ $("#jobs-requested").on("click", function () {
       html += `<p>Title: ${data[i].title}</p>`
       html += `<p>Status: ${data[i].status}</p>`
       html += `<button id ="drop-button" value="${data[i].id}">Drop Job</button>`
-      html += `<button id ="view-owner-button" value="${data[i].id}">View Owner</button>`
+      html += `<button id ="view-owner-button" value="${data[i].UserId}">View Owner</button>`
       html += `<hr>`
     }
     $("#pop-jobs-requested").append(html)
   });
+});
+
+$("#pop-jobs-requested").on("click", "#view-owner-button", function(){
+  var id = this.value
+  $.ajax("/api/user/view", {
+    type: "POST",
+    data: {id: id}
+  }).then(function(data){
+    console.log(data)
+  })
 });
 
 $("#pop-jobs-requested").on("click", "#drop-button", function () {
