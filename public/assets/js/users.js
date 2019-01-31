@@ -46,6 +46,7 @@
 
 
     $("#edit-profile").on("click", function(){
+      console.log("clicked")
       var id = localStorage.getItem("id");
       $.ajax("/api/userinfo",{
         type:"POST",
@@ -78,6 +79,42 @@
       });
     });
   
+
+    $("#edit-profile2").on("click", function(){
+      console.log("clicked")
+      var id = localStorage.getItem("id");
+      $.ajax("/api/userinfo",{
+        type:"POST",
+        data: {
+          id: id
+        }
+      }).then(function(data){
+        console.log(data)
+        $("#edit-name2").text(data.name);
+        $("#edit-location2").text(data.location);
+        $("#edit-contact2").text(data.contact);
+        $("#edit-specialty2").text(data.specialty);
+      })
+    })
+
+    $("#update-info2").on("click",function(){
+
+      var infoUpdate = {
+        name: $("#edit-name2").val().trim(),
+        location: $("#edit-location2").val().trim(),
+        contact: $("#edit-contact2").val().trim(),
+        specialty: $("#edit-specialty2").val().trim(),
+        id: localStorage.getItem("id")
+      }
+      $.ajax("api/userinfo",{
+        type: "PUT",
+        data: infoUpdate
+      }).then(function(data){
+        console.log(data);
+      });
+    });
+
+
       $("#post-job").on("click",function(event){
         console.log("clicked")
         event.preventDefault();
