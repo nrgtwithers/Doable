@@ -1,18 +1,49 @@
 
     $("#sign-out").on("click",function(){
-      localStorage.setItem("email", "signed out")
+      localStorage.setItem("email", "signed out");
      location.href= '/';
-    })
+    });
 
     $("#jobs-by-area").on("click",function(){
-      var location = localStorage.getItem('location')
+      var location = localStorage.getItem('location');
       $.ajax("/api/tasks/location", {
         type: "POST",
         data: {location: location}
     }).then(function (data) {
         console.log(data)
-    })
-    })
+        var html = `<p> Tasks in ${location} </p>`
+        html+=`<hr>`
+        for (var i=0; i<data.length; i++){
+          html += `<p>Title: ${data[i].title}</p>`
+          html += `<p>Description: ${data[i].description}</p>`
+          html += `<p>Pay: $${data[i].rateOfPay}/hour</p>`
+          html += `<p>Status: ${data[i].status}</p>`
+          html += `<button id="request-task">Take it</button>`
+          html += `<hr>`
+        }
+        $("#pop-tasks").append(html);
+    });
+    });
+
+    $("#current-job-status").on("click",function(){
+      var id = localStorage.getItem('id');
+      $.ajax("/api/tasks/status",{
+        type: "POST",
+        data: {id: id}
+      }).then(function(data){
+        console.log(data)
+        var html = `<p>Jobs you posted</p>`;
+        html+=`<hr>`
+        for(var i=0; i<data.length; i++){
+          html += `<p>Title: ${data[i].title}</p>`
+          html += `<p>Status: ${data[i].status}</p>`
+          html+= `<button id ="complete-job attr = "${i}">Complete</button>`
+          html += `<hr>`
+        }
+        $("#pop-current-tasks").append(html)
+      });
+    });
+
 
   
       $("#post-job").on("click",function(event){
@@ -24,7 +55,6 @@
           rateOfPay: $("#task-rop").val().trim(),
           location: $("#task-location").val().trim(),
           time: $("#task-time").val().trim(),
-          status: $("#task-status").val().trim(),
           category: $("#task-ctg").val().trim(),
           UserId: localStorage.getItem("id")
         }
@@ -35,7 +65,7 @@
       }).then(function () {
           console.log("looking for task")
       })
-      })
+      });
 
     
 
