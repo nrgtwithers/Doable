@@ -37,13 +37,25 @@
         for(var i=0; i<data.length; i++){
           html += `<p>Title: ${data[i].title}</p>`
           html += `<p>Status: ${data[i].status}</p>`
-          html+= `<button id ="complete-job attr = "${i}">Complete</button>`
+          html += `<button id ="complete-button" value="${data[i].id}">Complete</button>`
           html += `<hr>`
         }
         $("#pop-current-tasks").append(html)
       });
     });
 
+    $("#pop-current-tasks").on("click", "#complete-button" , function(){
+        var taskId = this.value;
+        $.ajax("/api/tasks/complete", {
+          type: "PUT",
+          data: {
+            id: taskId,
+            status: "done"
+          }
+        }).then(function(data){
+          console.log("taskId "+taskId );
+        })
+    })
 
     $("#edit-profile").on("click", function(){
       console.log("clicked")

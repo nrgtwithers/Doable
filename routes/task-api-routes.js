@@ -77,4 +77,19 @@ module.exports = function (app) {
         res.json(dbTask);
       });
   });
+
+  //complete task 
+  app.put("/api/tasks/complete", function(req,res){
+    db.Task.update(
+      req.body,{
+        where: {
+          id: req.body.id
+        }
+      }).then(function(dbTask){
+res.json(dbTask);
+      })
+  })
 };
+
+
+
