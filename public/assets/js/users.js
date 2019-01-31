@@ -304,6 +304,15 @@ $.ajax("/api/user/search",{
   }
 }).then(function(doers){
   console.log(doers)
+  html = `<h5> Doers </h5>`
+  html += `<hr>`
+  for(var i=0; i< doers.length; i++){
+html+= `<p>Name: ${doers[i].name} </p>`
+html += `<p>Location: ${doers[i].location}</p>`
+html+= `<p>Contact: ${doers[i].contact}</p>`
+html+=`<hr>`
+  }
+  $("#search-results").append(html)
 })
 })
 
