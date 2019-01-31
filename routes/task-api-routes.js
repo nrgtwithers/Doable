@@ -35,17 +35,12 @@ module.exports = function (app) {
 
 
   // show my tasks status
-  app.get("/api/tasks/:id", function (req, res) {
+  app.post("/api/tasks/status", function (req, res) {
     db.Task.findAll({
-      include: [{
-        model: db.User,
-      }]
-    }, {
         where: {
-          UserId: req.params.id
+          UserId: req.body.id
         }
       }).then(function (dbTask) {
-        console.log(dbTask.status)
         res.json(dbTask);
       });
   });

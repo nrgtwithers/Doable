@@ -43,23 +43,23 @@
                     <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
                 </li> --}}
                 <li>
-                    <div class="collapsible-header"><i class="material-icons">event_available</i>Current Jobs status</div>
+                    <div class="collapsible-header" ><i class="material-icons">event_available</i>Current Jobs status</div>
                     <div class="collapsible-body">
-                        {{#each task }}
+                        {{!-- {{#each task }} --}}
                         <div class="row">
                             <div class="col s12 m6">
                                 <div class="card #4caf50 green">
-                                    <div class="card-content white-text">
-                                        <span class="card-title">Card Title</span>
+                                    <div class="card-content white-text" >
+                                        {{!-- <span class="card-title">Card Title</span>
                                         <p>Title: {{task.title}}</p>
                                         <p>Description: {{task.description}}</p>
                                         <p>Location: {{task.location}}</p>
-                                        <p>Status: {{task.status}}</p>
+                                        <p>Status: {{task.status}}</p> --}}
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        {{/each}}
+                        {{!-- {{/each}} --}}
                     </div>
                 </li>
                 <li>
@@ -82,10 +82,10 @@
                                 </div>
                             </div>
                         </div>
-                        {{!-- {{/each}}
+                        {{!-- {{!-- {{/each}}
                     </div>
                 </li>
-                {{!-- <li>
+                {{!-- <li> --}}
                     <div class="collapsible-header"><i class="material-icons">grade</i>Ratings</div>
                     <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
                 </li> --}}
@@ -145,12 +145,6 @@
                                     </div>
                                     <div class="row">
                                         <div class="input-field col s12">
-                                            <textarea id="task-status" class="materialize-textarea"></textarea>
-                                            <label for="task-status">Status</label>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="input-field col s12">
                                             <textarea id="task-ctg" class="materialize-textarea"></textarea>
                                             <label for="task-ctg">Category</label>
                                         </div>
@@ -164,23 +158,23 @@
                     </div>
                 </li>
                 <li>
-                    <div class="collapsible-header"><i class="material-icons">event_available</i>Current Jobs status</div>
+                    <div class="collapsible-header" id="current-job-status"><i class="material-icons">event_available</i>Current Jobs status</div>
                     <div class="collapsible-body">
-                        {{#each task }}
+                        {{!-- {{#each task }} --}}
                         <div class="row">
                             <div class="col s12 m6">
                                 <div class="card #4caf50 green">
-                                    <div class="card-content white-text">
-                                        <span class="card-title">Card Title</span>
+                                    <div class="card-content white-text" id ="pop-current-tasks">
+                                        {{!-- <span class="card-title">Card Title</span>
                                         <p>Title: {{task.title}}</p>
                                         <p>Description: {{task.description}}</p>
                                         <p>Location: {{task.location}}</p>
-                                        <p>Status: {{task.status}}</p>
+                                        <p>Status: {{task.status}}</p> --}}
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        {{/each}}
+                        {{!-- {{/each}} --}}
                     </div>
                 </li>
                 <li>

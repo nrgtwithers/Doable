@@ -23,7 +23,8 @@ module.exports = function (sequelize, DataTypes) {
     },
     status: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: false,
+      defaultValue: "vacant"
     },
     category: {
       type: DataTypes.STRING,
