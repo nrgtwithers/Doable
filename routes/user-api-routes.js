@@ -135,4 +135,15 @@ app.post("/api/user/doer", function(req,res){
   })
 })
 
+//find users by specialty (hirer search)
+app.post("/api/user/search",function(req,res){
+  db.User.findAll({
+    where: {
+      specialty: req.body.specialty
+    }
+  }).then(function(doers){
+    res.json(doers)
+  })
+})
+
 };

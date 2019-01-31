@@ -273,6 +273,8 @@ $("#post-job").on("click", function (event) {
   })
 });
 
+
+//doer find a job search
 $("#find-a-job").on("click", function (event) {
   var word = $("#find-a-job-input").val().trim();
   $.ajax("/api/tasks/search", {
@@ -285,6 +287,20 @@ $("#find-a-job").on("click", function (event) {
   })
 })
 
+
+//hirer find a doer search 
+$("#find-doer-button").on("click",function(event){
+  event.preventDefault();
+var specialty = $("#find-doer-input").val().trim();
+$.ajax("/api/user/search",{
+  type: "POST",
+  data: {
+    specialty: specialty
+  }
+}).then(function(doers){
+  console.log(doers)
+})
+})
 
 //Collapsible
 $(document).ready(function () {
