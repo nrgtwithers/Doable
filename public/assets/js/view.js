@@ -132,8 +132,9 @@ var passwordInput = $("#password-login");
         $.post("api/users", {
             email: email
         }).then(function(data){
-            console.log(data)
+            
             localStorage.setItem('id',data.id)
+            localStorage.setItem('name',data.name)
             localStorage.setItem('location',data.location)
             
         })

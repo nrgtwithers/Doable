@@ -1,3 +1,8 @@
+$( document ).ready(function() {
+ var name = localStorage.getItem("name")
+ $("#user-name").append(" "+name+"!");
+});
+
 
 $("#sign-out").on("click", function () {
   localStorage.setItem("email", "signed out");
