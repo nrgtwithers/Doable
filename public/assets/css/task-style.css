@@ -235,3 +235,12 @@ div#howTo.row{
   margin: auto;
   width: 1200px;
 }
+
+.arrow{
+  /* color: #7ed957 !important; */
+  text-align: center;
+}
+
+.i.icon-blue{
+  color: #7ed957 !important;
+}
