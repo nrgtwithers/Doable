@@ -11,6 +11,17 @@
         data: {location: location}
     }).then(function (data) {
         console.log(data)
+        var html = `<p> Tasks in ${location} </p>`
+        html+=`<hr>`
+        for (var i=0; i<data.length; i++){
+          html += `<p>Title: ${data[i].title}</p>`
+          html += `<p>Description: ${data[i].description}</p>`
+          html += `<p>Pay: $${data[i].rateOfPay}/hour</p>`
+          html += `<p>Status: ${data[i].status}</p>`
+          html += `<button id="request-task">Take it</button>`
+          html += `<hr>`
+        }
+        $("#pop-tasks").append(html)
     })
     })
 
