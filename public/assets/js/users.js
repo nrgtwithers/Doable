@@ -18,11 +18,21 @@
           html += `<p>Description: ${data[i].description}</p>`
           html += `<p>Pay: $${data[i].rateOfPay}/hour</p>`
           html += `<p>Status: ${data[i].status}</p>`
-          html += `<button id="request-task">Take it</button>`
+          html += `<button id="request-task" value="${data[i].id}">Take it</button>`
           html += `<hr>`
         }
         $("#pop-tasks").append(html);
     });
+    });
+
+    $("#pop-tasks").on("click","#request-task", function(){
+      var id = this.value;
+      $.ajax("/api/tasks/request",{
+        type: "PUT",
+        data: {id:id, status:"Requested", doer: localStorage.getItem("id")}
+      }).then(function(data){
+        console.log("updating task")
+      })
     });
 
     $("#current-job-status").on("click",function(){
@@ -40,8 +50,9 @@
           if (data[i].status == "Requested"){
             html += `<p>Requested by: ${data[i].doer} </p>`
             html += `<button id ="accept-button" value="${data[i].id}">Accept Request</button>`
+          } else {
+            html += `<button id ="complete-button" value="${data[i].id}">Complete</button>`
           }
-          html += `<button id ="complete-button" value="${data[i].id}">Complete</button>`
           html += `<hr>`
         }
         $("#pop-current-tasks").append(html)
@@ -61,6 +72,27 @@
         })
     })
 
+    $("#jobs-requested").on("click",function(){
+      var id = localStorage.getItem('id');
+      $.ajax("/api/user/request",{
+        type: "POST",
+        data: {id: id}
+      }).then(function(data){
+        console.log(data)
+        var html = `<p>Jobs you Requested</p>`;
+        html+=`<hr>`
+        for(var i=0; i<data.length; i++){
+          html += `<p>Title: ${data[i].title}</p>`
+          html += `<p>Status: ${data[i].status}</p>`
+            html += `<button id ="drop-button" value="${data[i].id}">Drop Job</button>`
+            html += `<button id ="view-owner-button" value="${data[i].id}">View Owner</button>`
+          html += `<hr>`
+        }
+        $("#pop-jobs-requested").append(html)
+      });
+    });
+
+    
     $("#edit-profile").on("click", function(){
       console.log("clicked")
       var id = localStorage.getItem("id");

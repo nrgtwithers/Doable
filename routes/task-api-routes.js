@@ -9,13 +9,13 @@ module.exports = function (app) {
     console.log(req.body)
     db.Task.findAll({
       where: {
-        location: req.body.location
+        location: req.body.location,
+        status: "Vacant"
       }
     }).then(function (tasks) {
       res.json(tasks)
     })
   });
-
 
 
   // find tasks by title
@@ -39,7 +39,7 @@ module.exports = function (app) {
     db.Task.findAll({
         where: {
           UserId: req.body.id,
-          status: "Vacant" || "Requested"
+          status: "Vacant"|| "Requested"
         }
       }).then(function (dbTask) {
         res.json(dbTask);
@@ -89,6 +89,30 @@ module.exports = function (app) {
 res.json(dbTask);
       })
   })
+
+  //request task 
+  app.put("/api/tasks/request", function(req,res){
+    db.Task.update(
+      req.body,{
+        where: {
+          id: req.body.id
+        }
+      }).then(function(dbTask){
+res.json(dbTask);
+      })
+  })
+
+  //view jobs user has requested
+  app.post("/api/user/request", function (req, res) {
+    db.Task.findAll({
+        where: {
+          doer: req.body.id,
+          status: "Requested"
+        }
+      }).then(function (dbTask) {
+        res.json(dbTask);
+      });
+  });
 };
 
 
