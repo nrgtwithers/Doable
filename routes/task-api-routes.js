@@ -133,6 +133,17 @@ module.exports = function (app) {
       res.json(dbTask);
     });
   });
+
+  //decline task doer 
+  app.put("/api/task/decline",function(req,res){
+    db.Task.update(req.body, {
+      where : {
+        id: req.body.id
+      }
+    }).then(function(task){
+      res.json(task)
+    })
+  })
 };
 
 

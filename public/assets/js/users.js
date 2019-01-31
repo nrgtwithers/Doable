@@ -121,6 +121,22 @@ console.log(doer)
   })
 })
 
+//hirer decline doer 
+$("#pop-current-tasks").on("click", "#decline-button", function(){
+  var taskId = this.value;
+  $.ajax("/api/task/decline",{
+    type: "PUT",
+    data: {
+      id: taskId,
+      doer: 0,
+      requested: false,
+      vacant: true
+    }
+  }).then(function(task){
+    console.log(task)
+  })
+})
+
 $("#jobs-requested").on("click", function () {
   var id = localStorage.getItem('id');
   $.ajax("/api/user/request", {
