@@ -37,6 +37,10 @@
         for(var i=0; i<data.length; i++){
           html += `<p>Title: ${data[i].title}</p>`
           html += `<p>Status: ${data[i].status}</p>`
+          if (data[i].status == "Requested"){
+            html += `<p>Requested by: ${data[i].doer} </p>`
+            html += `<button id ="accept-button" value="${data[i].id}">Accept Request</button>`
+          }
           html += `<button id ="complete-button" value="${data[i].id}">Complete</button>`
           html += `<hr>`
         }

@@ -39,7 +39,7 @@ module.exports = function (app) {
     db.Task.findAll({
         where: {
           UserId: req.body.id,
-          status: (!'Complete')
+          status: "Vacant" || "Requested"
         }
       }).then(function (dbTask) {
         res.json(dbTask);
