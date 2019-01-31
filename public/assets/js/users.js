@@ -1,3 +1,4 @@
+
 $(document).ready(function () {
   var name = localStorage.getItem("name")
   $("#user-name").append(" " + name + "!");
@@ -66,7 +67,7 @@ $("#current-job-status").on("click", function () {
         html += `<p>Status: Requested</p>`
         html += `<p>Requesting Doer Id: ${data[i].doer} </p>`
         html += `<button id ="accept-button" value="${data[i].id}">Accept Request</button>`
-        html += `<button id ="view-doer-button" value="${data[i].doer}">View Doer</button>`
+        html += `<button id ="view-doer-button"" value="${data[i].doer}">View Doer</button>`
         html += `<button id ="decline-button" value="${data[i].id}">Decline</button>`
       } else if (data[i].inProgress) {
         html += `<p>Status: Requested</p>`
@@ -122,7 +123,13 @@ $("#pop-current-tasks").on("click", "#view-doer-button", function(){
       id: doerId
     }
   }).then(function(doer){
+  $("#pop-requesting-doer").empty();
+  $("#pop-requesting-doer").append("<h5>Pending Doer</h5>");
+  $("#pop-requesting-doer").append(`<p> Name: ${doer.name}</p>`);
+  $("#pop-requesting-doer").append(`<p> Location: ${doer.location}</p>`);
+  $("#pop-requesting-doer").append(`<p> Contact: ${doer.contact}</p>`);
 console.log(doer)
+
   })
 })
 
@@ -167,16 +174,23 @@ $("#jobs-requested").on("click", function () {
   });
 });
 
+//doer, view job hirer
 $("#pop-jobs-requested").on("click", "#view-owner-button", function () {
   var id = this.value
   $.ajax("/api/user/view", {
     type: "POST",
     data: { id: id }
-  }).then(function (data) {
-    console.log(data)
+  }).then(function (hirer) {
+    console.log(hirer)
+    $("#pop-hirer").empty()
+    $("#pop-hirer").append("<h5>Task Hirer</h5>")
+    $("#pop-hirer").append(`<p>Name: ${hirer.name}`)
+    $("#pop-hirer").append(`<p>Location: ${hirer.location}`)
+    $("#pop-hirer").append(`<p>Contact: ${hirer.contact}`)
   })
 });
 
+//doer, drop job button
 $("#pop-jobs-requested").on("click", "#drop-button", function () {
   var id = this.value;
   $.ajax("/api/task/drop", {
@@ -279,7 +293,7 @@ $("#post-job").on("click", function (event) {
 });
 
 
-//doer find a job search
+//doer, find a job search
 $("#find-a-job").on("click", function (event) {
   var word = $("#find-a-job-input").val().trim();
   $.ajax("/api/tasks/search", {
@@ -288,12 +302,23 @@ $("#find-a-job").on("click", function (event) {
       title: word
     }
   }).then(function (data) {
+    $("#jobs-results").empty();
+    $("#jobs-results").append(`<h5>Possible Jobs for you!</h5>`);
+    $("#jobs-results").append(`<hr>`)
+    for(var i=0; i<data.length; i++){
+      $("#jobs-results").append(`<p>Title: ${data[i].title}</p>`);
+      $("#jobs-results").append(`<p>Description: ${data[i].description}</p>`);
+      $("#jobs-results").append(`<p>Pay: $${data[i].rateOfPay}/Hour</p>`);
+      $("#jobs-results").append(`<p>Location: ${data[i].location}</p>`);
+      $("#jobs-results").append(`<button>Take it</button>`);
+      $("#jobs-results").append(`<hr>`);
+    }
     console.log(data)
   })
 })
 
 
-//hirer find a doer search 
+//hirer, find a doer search 
 $("#find-doer-button").on("click",function(event){
   event.preventDefault();
 var specialty = $("#find-doer-input").val().trim();
