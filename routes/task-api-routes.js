@@ -37,13 +37,13 @@ module.exports = function (app) {
   // show my tasks status
   app.post("/api/tasks/status", function (req, res) {
     db.Task.findAll({
-        where: {
-          UserId: req.body.id,
-          status: "Vacant"|| "Requested"
-        }
-      }).then(function (dbTask) {
-        res.json(dbTask);
-      });
+      where: {
+        UserId: req.body.id,
+        status: "Vacant" || "Requested"
+      }
+    }).then(function (dbTask) {
+      res.json(dbTask);
+    });
   });
 
   //create a new task 
@@ -79,39 +79,51 @@ module.exports = function (app) {
   });
 
   //complete task 
-  app.put("/api/tasks/complete", function(req,res){
+  app.put("/api/tasks/complete", function (req, res) {
     db.Task.update(
-      req.body,{
+      req.body, {
         where: {
           id: req.body.id
         }
-      }).then(function(dbTask){
-res.json(dbTask);
+      }).then(function (dbTask) {
+        res.json(dbTask);
       })
   })
 
   //request task 
-  app.put("/api/tasks/request", function(req,res){
+  app.put("/api/tasks/request", function (req, res) {
     db.Task.update(
-      req.body,{
+      req.body, {
         where: {
           id: req.body.id
         }
-      }).then(function(dbTask){
-res.json(dbTask);
+      }).then(function (dbTask) {
+        res.json(dbTask);
+      })
+  })
+
+  //drop task 
+  app.put("/api/task/drop", function (req, res) {
+    db.Task.update(
+      req.body, {
+        where: {
+          id: req.body.id
+        }
+      }).then(function (dbTask) {
+        res.json(dbTask);
       })
   })
 
   //view jobs user has requested
   app.post("/api/user/request", function (req, res) {
     db.Task.findAll({
-        where: {
-          doer: req.body.id,
-          status: "Requested"
-        }
-      }).then(function (dbTask) {
-        res.json(dbTask);
-      });
+      where: {
+        doer: req.body.id,
+        status: "Requested"
+      }
+    }).then(function (dbTask) {
+      res.json(dbTask);
+    });
   });
 };
 
