@@ -1,6 +1,6 @@
-$( document ).ready(function() {
- var name = localStorage.getItem("name")
- $("#user-name").append(" "+name+"!");
+$(document).ready(function () {
+  var name = localStorage.getItem("name")
+  $("#user-name").append(" " + name + "!");
 });
 
 
@@ -9,6 +9,7 @@ $("#sign-out").on("click", function () {
   location.href = '/';
 });
 
+// jobs by area for doer 
 $("#jobs-by-area").on("click", function () {
   var location = localStorage.getItem('location');
   $.ajax("/api/tasks/location", {
@@ -22,7 +23,6 @@ $("#jobs-by-area").on("click", function () {
       html += `<p>Title: ${data[i].title}</p>`
       html += `<p>Description: ${data[i].description}</p>`
       html += `<p>Pay: $${data[i].rateOfPay}/hour</p>`
-      html += `<p>Status: ${data[i].status}</p>`
       html += `<button id="request-task" value="${data[i].id}">Take it</button>`
       html += `<hr>`
     }
@@ -30,16 +30,19 @@ $("#jobs-by-area").on("click", function () {
   });
 });
 
+//doer reuest a task button
 $("#pop-tasks").on("click", "#request-task", function () {
   var id = this.value;
   $.ajax("/api/tasks/request", {
     type: "PUT",
-    data: { id: id, status: "Requested", doer: localStorage.getItem("id") }
+    data: { id: id, vacant: false, requested: true, doer: localStorage.getItem("id") }
   }).then(function (data) {
     console.log("updating task")
   })
 });
 
+
+//hirer current job status
 $("#current-job-status").on("click", function () {
   var id = localStorage.getItem('id');
   $.ajax("/api/tasks/status", {
@@ -51,11 +54,18 @@ $("#current-job-status").on("click", function () {
     html += `<hr>`
     for (var i = 0; i < data.length; i++) {
       html += `<p>Title: ${data[i].title}</p>`
-      html += `<p>Status: ${data[i].status}</p>`
-      if (data[i].status == "Requested") {
-        html += `<p>Requested by: ${data[i].doer} </p>`
+      if (data[i].vacant) {
+        html += `<p>Status: Vacant</p>`
+        html += `<button id ="complete-button" value="${data[i].id}">Complete</button>`
+      } else if (data[i].requested) {
+        html += `<p>Status: Requested</p>`
+        html += `<p>Requesting Doer Id: ${data[i].doer} </p>`
         html += `<button id ="accept-button" value="${data[i].id}">Accept Request</button>`
-      } else {
+        html += `<button id ="view-doer-button" value="${data[i].doer}">View Doer</button>`
+        html += `<button id ="decline-button" value="${data[i].id}">Decline</button>`
+      } else if (data[i].inProgress) {
+        html += `<p>Status: Requested</p>`
+        html += `<p>Doer: ${data[i].doer} </p>`
         html += `<button id ="complete-button" value="${data[i].id}">Complete</button>`
       }
       html += `<hr>`
@@ -64,16 +74,50 @@ $("#current-job-status").on("click", function () {
   });
 });
 
+// hirer complete job button
 $("#pop-current-tasks").on("click", "#complete-button", function () {
   var taskId = this.value;
   $.ajax("/api/tasks/complete", {
     type: "PUT",
     data: {
       id: taskId,
-      status: "done"
+      done: true,
+      requested: false,
+      vacant: false,
+      inProgress: false
     }
   }).then(function (data) {
     console.log("taskId " + taskId);
+  })
+})
+
+// hirer accept doer to do the job button
+$("#pop-current-tasks").on("click", "#accept-button", function () {
+  var taskId = this.value;
+  $.ajax("/api/tasks/accept", {
+    type: "PUT",
+    data: {
+      id: taskId,
+      done: false,
+      requested: false,
+      vacant: false,
+      inProgress: true
+    }
+  }).then(function (data) {
+    console.log("taskId " + taskId);
+  })
+})
+
+//hirer view doer that requested the job
+$("#pop-current-tasks").on("click", "#view-doer-button", function(){
+  var doerId = this.value;
+  $.ajax("/api/user/doer",{
+    type: "POST",
+    data: {
+      id: doerId
+    }
+  }).then(function(doer){
+console.log(doer)
   })
 })
 
@@ -88,21 +132,26 @@ $("#jobs-requested").on("click", function () {
     html += `<hr>`
     for (var i = 0; i < data.length; i++) {
       html += `<p>Title: ${data[i].title}</p>`
-      html += `<p>Status: ${data[i].status}</p>`
+      if (data[i].requested){
+        html += `<p>Status: Request is pending </p>`
+      };
+      if (data[i].inProgress){
+        html += `<p>Status: Job in progress</p>`
+      }
       html += `<button id ="drop-button" value="${data[i].id}">Drop Job</button>`
-      html += `<button id ="view-owner-button" value="${data[i].UserId}">View Owner</button>`
+      html += `<button id ="view-owner-button" value="${data[i].UserId}">View Hirer</button>`
       html += `<hr>`
     }
     $("#pop-jobs-requested").append(html)
   });
 });
 
-$("#pop-jobs-requested").on("click", "#view-owner-button", function(){
+$("#pop-jobs-requested").on("click", "#view-owner-button", function () {
   var id = this.value
   $.ajax("/api/user/view", {
     type: "POST",
-    data: {id: id}
-  }).then(function(data){
+    data: { id: id }
+  }).then(function (data) {
     console.log(data)
   })
 });
@@ -111,7 +160,7 @@ $("#pop-jobs-requested").on("click", "#drop-button", function () {
   var id = this.value;
   $.ajax("/api/task/drop", {
     type: "PUT",
-    data: { id: id , status: "Vacant", doer: 0}
+    data: { id: id, requested: false ,vacant: true , doer: 0 }
   }).then(function (data) {
     console.log("updated");
   });
@@ -208,6 +257,17 @@ $("#post-job").on("click", function (event) {
   })
 });
 
+$("#find-a-job").on("click", function (event) {
+  var word = $("#find-a-job-input").val().trim();
+  $.ajax("/api/tasks/search", {
+    type: "POST",
+    data: {
+      title: word
+    }
+  }).then(function (data) {
+    console.log(data)
+  })
+})
 
 
 //Collapsible

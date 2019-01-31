@@ -10,7 +10,7 @@ module.exports = function (app) {
     db.Task.findAll({
       where: {
         location: req.body.location,
-        status: "Vacant"
+        vacant: true
       }
     }).then(function (tasks) {
       res.json(tasks)
@@ -19,14 +19,10 @@ module.exports = function (app) {
 
 
   // find tasks by title
-  app.get("/api/tasks/:title", function (req, res) {
+  app.post("/api/tasks/search", function (req, res) {
     db.Task.findAll({
-      include: [{
-        model: db.User,
-      }]
-    }, {
         where: {
-          title: req.params.location
+          title: req.body.title
         }
       }).then(function (dbTask) {
         res.json(dbTask);
@@ -39,7 +35,7 @@ module.exports = function (app) {
     db.Task.findAll({
       where: {
         UserId: req.body.id,
-        status: "Vacant" || "Requested"
+        done: false,
       }
     }).then(function (dbTask) {
       res.json(dbTask);
@@ -102,6 +98,18 @@ module.exports = function (app) {
       })
   })
 
+  //accept doer
+  app.put("/api/tasks/accept", function (req, res) {
+    db.Task.update(
+      req.body, {
+        where: {
+          id: req.body.id
+        }
+      }).then(function (dbTask) {
+        res.json(dbTask);
+      })
+  })
+
   //drop task 
   app.put("/api/task/drop", function (req, res) {
     db.Task.update(
@@ -119,7 +127,7 @@ module.exports = function (app) {
     db.Task.findAll({
       where: {
         doer: req.body.id,
-        status: "Requested"
+        done: false
       }
     }).then(function (dbTask) {
       res.json(dbTask);

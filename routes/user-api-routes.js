@@ -124,4 +124,15 @@ module.exports = function (app) {
     })
   });
 
+  //find requesing doer 
+app.post("/api/user/doer", function(req,res){
+  db.User.findOne({
+    where: {
+      id: req.body.id
+    }
+  }).then(function(doer){
+    res.json(doer)
+  })
+})
+
 };

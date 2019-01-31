@@ -21,10 +21,25 @@ module.exports = function (sequelize, DataTypes) {
       type: DataTypes.INTEGER,
       allowNull: true
     },
-    status: {
-      type: DataTypes.STRING,
+    done: {
+      type: DataTypes.BOOLEAN,
       allowNull: false,
-      defaultValue: "vacant"
+      defaultValue: false
+    },
+    vacant: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+      defaultValue: true
+    },
+    requested: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+      defaultValue: false
+    },
+    inProgress: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+      defaultValue: false
     },
     category: {
       type: DataTypes.STRING,
