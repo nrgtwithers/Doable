@@ -3,26 +3,15 @@
 
         <h2>Welcome {{name}}!</h2>
 
+        {{!-- <img src="{{img.url}}" class="userpic" /> --}}
 
         <p>Please choose from one of the following:</p>
-        {{!-- <button class=" hirerbtn waves-effect #33691e light-green darken-4 waves-light" name="action">View as
-            Hirer
-        </button> --}}
+
         <button placeholder="View as Hirer" class="hirer #FFFFFF white waves-effect waves-light btn-small" href="">View
             as Hirer</button>
         <button placeholder="View as Doer" class="doer #FFFFFF white waves-effect waves-light btn-small" href="">View
             as Doer</button>
 
-
-        <!-- Dropdown Trigger -->
-        {{!-- <a class='dropdown-trigger #33691e light-green darken-4 btn' href='#' data-target='dropdown1'>Viewing
-            Options</a>
-
-        <!-- Dropdown Structure -->
-        <ul id='dropdown1' class='dropdown-content'>
-            <li><button placeholder="View as Hirer" class="hirer" href="">View as Hirer</button></li>
-            <li><button placeholder="View as Doer" class="doer" href="">View as Doer</button></li>
-        </ul> --}}
         <br>
         <hr>
         <br>
@@ -111,9 +100,21 @@
                             <div class="search">
                                 <h5>Find a Job</h5>
                                 <input class="searchbar #ffffff white" type="text" placeholder="">
-                                <button class="btn waves-effect waves-light btn-small #4caf50 green" type="submit" name="action">
+                                <button class="btn waves-effect waves-light btn-small #4caf50 green modal-trigger" href="#modal5"
+                                    type="submit" name="action">
                                     <i class="fas fa-search"></i>
                                 </button>
+
+                                <!-- Modal Structure -->
+                                <div id="modal5" class="modal">
+                                    <div class="modal-content">
+                                        <h5>Possible Jobs for you!</h5>
+                                        <p>A bunch of text</p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
+                                    </div>
+                                </div>
                             </div>
                         </span></div>
             </ul>
@@ -240,9 +241,19 @@
                             <div class="search">
                                 <h5>Find the best Doer for you</h5>
                                 <input class="searchbar #ffffff white" type="text" placeholder="">
-                                <button class="btn waves-effect waves-light btn-small #4caf50 green" type="submit" name="action">
+                                <button class="btn waves-effect waves-light btn-small #4caf50 green modal-trigger" href="#modal6" type="submit" name="action">
                                     <i class="fas fa-search"></i>
                                 </button>
+                                <!-- Modal Structure -->
+                                <div id="modal6" class="modal">
+                                    <div class="modal-content">
+                                        <h5>Modal Header</h5>
+                                        <p>A bunch of text</p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
+                                    </div>
+                                </div>
                             </div>
                         </span></div>
                 </li>

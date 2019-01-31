@@ -71,12 +71,13 @@
 					</div>
 			</form>
 		</div>
-		<h5>If you don't already have an account, create an account <a class="waves-effect waves-light #33691e light-green darken-4 btn modal-trigger" href="#modal2">here.</a>
-			</h5>
+		<h5>If you don't already have an account, create an account <a class="waves-effect waves-light #33691e light-green darken-4 btn modal-trigger"
+			 href="#modal2">here.</a>
+		</h5>
 	</div>
-{{!-- test --}}
-{{!-- <button onclick="location.href='http://www.google.com'" type="button">
-     www.google.com</button> --}}
+	{{!-- test --}}
+	{{!-- <button onclick="location.href='http://www.google.com'" type="button">
+		www.google.com</button> --}}
 
 	<div class="modal-footer">
 		<button href="/user" class="modal-close waves-effect waves-green btn-flat" id="login-button">Sign in</button>
@@ -92,12 +93,12 @@
 					<div class="row">
 						<div class="input-field col s6">
 							<i class="material-icons prefix">account_circle</i>
-							<input id= "new-name" type="text" class="validate">
+							<input id="new-name" type="text" class="validate">
 							<label for="new-name">Name</label>
 						</div>
 						<div class="input-field col s6">
 							<i class="material-icons prefix">phone</i>
-							<input id="new-contact"  type="tel" class="validate">
+							<input id="new-contact" type="tel" class="validate">
 							<label for="new-contact">Telephone</label>
 						</div>
 					</div>
@@ -119,7 +120,7 @@
 			</div>
 		</div>
 		<div class="modal-footer">
-			<button id="sign-up"  class="modal-close waves-effect waves-green btn-flat">Create your account</button>
+			<button id="sign-up" class="modal-close waves-effect waves-green btn-flat">Create your account</button>
 		</div>
 	</div>
 
@@ -132,9 +133,23 @@
 				<div class="search">
 					<h1>Find a Doer</h1>
 					<input class="searchbar #ffffff white" type="text" placeholder="  What do you need done?">
-					<button id ="search-tasks"class="btn waves-effect waves-light btn-large #4caf50 green" type="submit" name="action">
+					<button id="search-tasks" class="btn waves-effect waves-light btn-medium #4caf50 green modal-trigger" type="submit" name="action" href="#modal3">
 						<i class="fas fa-search"></i>
 					</button>
+
+					<!-- Modal Trigger -->
+					{{!-- <a class="waves-effect waves-light btn modal-trigger" href="#modal3">Modal</a> --}}
+
+					<!-- Modal Structure -->
+					<div id="modal3" class="modal">
+						<div class="modal-content">
+							<h5>Search Results:</h5>
+							{{!-- <p class="searchdoer">A bunch of text</p> --}}
+						</div>
+						<div class="modal-footer">
+							<a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
