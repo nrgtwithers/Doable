@@ -45,6 +45,21 @@
     });
 
 
+    $("#edit-profile").on("click", function(){
+      var id = localStorage.getItem("id");
+      $.ajax("/api/userinfo",{
+        type:"POST",
+        data: {
+          id: id
+        }
+      }).then(function(data){
+        console.log(data)
+        $("#edit-name").text(data.name);
+        $("#edit-location").text(data.location);
+        $("#edit-contact").text(data.contact);
+        $("#edit-specialty").text(data.specialty);
+      })
+    })
   
       $("#post-job").on("click",function(event){
         console.log("clicked")

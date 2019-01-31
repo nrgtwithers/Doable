@@ -31,6 +31,16 @@ module.exports = function (app) {
     });
   });
 
+  app.post("/api/userinfo",function(req,res){
+    db.User.findOne({
+      where: {
+        id: req.body.id
+      }
+    }).then(function(dbUser){
+      res.json(dbUser)
+    })
+  })
+
 
   app.get("/logout", function (req, res) {
     req.logout();

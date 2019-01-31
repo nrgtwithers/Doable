@@ -38,11 +38,10 @@ module.exports = function (sequelize, DataTypes) {
         //     allowNull: true,
         //     defaultValue: 0
         // },
-        // specialty: {
-        //     type: DataTypes.STRING,
-        //     allowNull: true,
-        //     defaultValue: ""
-        // },
+        specialty: {
+            type: DataTypes.STRING,
+            allowNull: true,
+        },
         // status: {
         //     type: DataTypes.STRING,
         //     allowNull: true,
