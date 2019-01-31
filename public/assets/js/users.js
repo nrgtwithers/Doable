@@ -92,7 +92,10 @@
       });
     });
 
-    
+    $("#pop-jobs-requested").on("click","#drop-button",function(){
+console.log("trying to drop task with the id: "+ this.value)
+    })
+
     $("#edit-profile").on("click", function(){
       console.log("clicked")
       var id = localStorage.getItem("id");
