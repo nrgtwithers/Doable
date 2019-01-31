@@ -25,30 +25,37 @@
                         <form class="col s12">
                             <div class="row">
                                 <div class="input-field col s12">
-                                    <textarea id="edit-name" class="materialize-textarea"></textarea>
+                                    <i class="material-icons prefix">account_circle</i>
+                                    <input id="edit-name" type="text" class="validate">
+                                    {{!-- <textarea id="edit-name" class="materialize-textarea"></textarea> --}}
+                                    <span class="helper-text" data-error="wrong" data-success="right">Name</span>
 
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="input-field col s12">
+                                    <i class="material-icons prefix">location_on</i>
                                     <textarea id="edit-location" class="materialize-textarea"></textarea>
-
+                                    <span class="helper-text" data-error="wrong" data-success="right">Location</span>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="input-field col s12">
+                                    <i class="material-icons prefix">phone</i>
                                     <textarea id="edit-contact" class="materialize-textarea"></textarea>
-
+                                    <span class="helper-text" data-error="wrong" data-success="right">Contact</span>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="input-field col s12">
+                                    <i class="material-icons prefix">short_text</i>
                                     <textarea id="edit-specialty" class="materialize-textarea"></textarea>
+                                    <span class="helper-text" data-error="wrong" data-success="right">Speciality</span>
 
                                 </div>
                             </div>
 
-                            <button id="update-info">Update</button>
+                            <button id="update-info" class="#33691e light-green darken-4 waves-effect waves-light btn-small">Update</button>
 
                         </form>
                     </div>
@@ -131,7 +138,7 @@
                             </div>
                         </span></div>
             </ul>
-            <button id="sign-out">Sign out</button>
+            <button id="sign-out" class="#33691e light-green darken-4 waves-effect waves-light btn-small">Sign out</button>
         </div>
         <div id="hirer">
             <ul class="collapsible">
@@ -144,38 +151,39 @@
                         <form class="col s12">
                             <div class="row">
                                 <div class="input-field col s12">
+                                    <i class="material-icons prefix">account_circle</i>
                                     <textarea id="edit-name2" class="materialize-textarea"></textarea>
-
+                                    <span class="helper-text" data-error="wrong" data-success="right">Name</span>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="input-field col s12">
+                                    <i class="material-icons prefix">location_on</i>
                                     <textarea id="edit-location2" class="materialize-textarea"></textarea>
-
+                                    <span class="helper-text" data-error="wrong" data-success="right">Location</span>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="input-field col s12">
+                                    <i class="material-icons prefix">phone</i>
                                     <textarea id="edit-contact2" class="materialize-textarea"></textarea>
-
+                                    <span class="helper-text" data-error="wrong" data-success="right">Contact</span>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="input-field col s12">
+                                    <i class="material-icons prefix">short_text</i>
                                     <textarea id="edit-specialty2" class="materialize-textarea"></textarea>
-
+                                    <span class="helper-text" data-error="wrong" data-success="right">Speciality</span>
                                 </div>
                             </div>
 
-                            <button id="update-info2">Update</button>
+                            <button id="update-info2" class="#33691e light-green darken-4 waves-effect waves-light btn-small">Update</button>
 
                         </form>
                     </div>
                 </li>
-                {{!-- <li>
-                    <div class="collapsible-header"><i class="material-icons">announcement</i>Messages</div>
-                    <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
-                </li> --}}
+
                 <li>
                     <div id="post-job-form" class="collapsible-header"><i class="material-icons">build</i>Post a Job</div>
                     <div class="collapsible-body">
@@ -219,7 +227,7 @@
                                         </div>
                                     </div>
 
-                                    <button id="post-job">send</button>
+                                    <button id="post-job" class="#33691e light-green darken-4 waves-effect waves-light btn-small">send</button>
 
                                 </form>
                             </div>
@@ -284,10 +292,6 @@
                             </div>
                         </span></div>
                 </li>
-                {{!-- <li>
-                    <div class="collapsible-header"><i class="material-icons">grade</i>Ratings</div>
-                    <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
-                </li> --}}
             </ul>
 
             <button id="sign-out2" class="#33691e light-green darken-4 waves-effect waves-light btn-small">SIGN OUT</button>

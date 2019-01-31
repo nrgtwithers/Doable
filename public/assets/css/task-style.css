@@ -245,10 +245,17 @@ div#howTo.row{
   color: #7ed957 !important;
 }
 
+textarea#edit-specialty, textarea#edit-contact, textarea#edit-location, textarea#edit-name,textarea#edit-specialty2, textarea#edit-contact2, textarea#edit-location2, textarea#edit-name2{
+  width: 80% !important;
+}
+
 #search-results {
   color: black;
 }
 #jobs-results{
   color: black;
   font-size: 20px
+
+hr{
+  border-color: #7ed957;
 }

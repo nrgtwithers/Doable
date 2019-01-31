@@ -23,7 +23,7 @@ $("#jobs-by-area").on("click", function () {
     data: { location: location }
   }).then(function (data) {
     console.log(data)
-    var html = `<p> Tasks in ${location} </p>`
+    var html = `<h4> Tasks in ${location} </h4>`
     html += `<hr>`
     for (var i = 0; i < data.length; i++) {
       html += `<p>Title: ${data[i].title}</p>`
@@ -56,7 +56,7 @@ $("#current-job-status").on("click", function () {
     data: { id: id }
   }).then(function (data) {
     console.log(data)
-    var html = `<p>Jobs you posted</p>`;
+    var html = `<h4>Jobs you posted</h4>`;
     html += `<hr>`
     for (var i = 0; i < data.length; i++) {
       html += `<p>Title: ${data[i].title}</p>`
@@ -156,7 +156,7 @@ $("#jobs-requested").on("click", function () {
     data: { id: id }
   }).then(function (data) {
     console.log(data)
-    var html = `<p>Jobs you Requested</p>`;
+    var html = `<h4>Jobs you Requested</h4>`;
     html += `<hr>`
     for (var i = 0; i < data.length; i++) {
       html += `<p>Title: ${data[i].title}</p>`
