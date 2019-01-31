@@ -29,6 +29,10 @@ module.exports = function (sequelize, DataTypes) {
     category: {
       type: DataTypes.STRING,
       allowNull: false
+    },
+    doer: {
+      type: DataTypes.STRING,
+      allowNull: true
     }
   });
 

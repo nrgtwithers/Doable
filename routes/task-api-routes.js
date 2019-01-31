@@ -38,7 +38,8 @@ module.exports = function (app) {
   app.post("/api/tasks/status", function (req, res) {
     db.Task.findAll({
         where: {
-          UserId: req.body.id
+          UserId: req.body.id,
+          status: (!'Complete')
         }
       }).then(function (dbTask) {
         res.json(dbTask);

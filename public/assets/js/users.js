@@ -37,12 +37,13 @@
         for(var i=0; i<data.length; i++){
           html += `<p>Title: ${data[i].title}</p>`
           html += `<p>Status: ${data[i].status}</p>`
-          html+= `<button id ="complete-job">Complete</button>`
+          html+= `<button id ="complete-job attr = "${i}">Complete</button>`
           html += `<hr>`
         }
         $("#pop-current-tasks").append(html)
       });
     });
+
 
   
       $("#post-job").on("click",function(event){
