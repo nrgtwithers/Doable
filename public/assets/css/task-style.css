@@ -256,3 +256,8 @@ textarea#edit-specialty, textarea#edit-contact, textarea#edit-location, textarea
 hr{
   border-color: #7ed957;
 }
+
+.upload{
+  max-width: 300px;
+  margin: auto;
+}
