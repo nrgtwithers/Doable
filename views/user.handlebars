@@ -38,10 +38,6 @@
                             {{this.email}}
                         </span></div>
                 </li>
-                {{!-- <li>
-                    <div class="collapsible-header"><i class="material-icons">announcement</i>Messages</div>
-                    <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
-                </li> --}}
                 <li>
                     <div class="collapsible-header"><i class="material-icons">event_available</i>Current Jobs status</div>
                     <div class="collapsible-body">
@@ -63,7 +59,8 @@
                     </div>
                 </li>
                 <li>
-                    <div class="collapsible-header" id= "jobs-by-area"><i class="material-icons">place</i>Upcoming Jobs in your Area</div>
+                    <div class="collapsible-header" id="jobs-by-area"><i class="material-icons">place</i>Upcoming Jobs
+                        in your Area</div>
                     <div class="collapsible-body">
                         {{#each task }}
                         <div class="row">
@@ -105,12 +102,31 @@
                         {{this.email}}
                     </div>
                 </li>
-                {{!-- <li>
-                    <div class="collapsible-header"><i class="material-icons">announcement</i>Messages</div>
-                    <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
-                </li> --}}
                 <li>
-                    <div id ="post-job-form"class="collapsible-header"><i class="material-icons">build</i>Post a Job</div>
+                    <div class="collapsible-header"><i class="material-icons">announcement</i>Job Requests</div>
+                    <div class="collapsible-body"> {{#each task }}
+                        <div class="row">
+                            <div class="col s12 m6">
+                                <div class="card #4caf50 green">
+                                    <div class="card-content white-text">
+                                        <span class="card-title">Card Title</span>
+                                        <p>Doer: {{task.title}}</p>
+                                        <p>Description: {{task.description}}</p>
+                                        <p>Location: {{task.location}}</p>
+                                    </div>
+                                    <div class="determination">
+                                        <button placeholder="" class="hirer #FFFFFF white waves-effect waves-light btn-small"
+                                            href="">ACCEPT</button>
+                                        <button placeholder="" class="doer #FFFFFF white waves-effect waves-light btn-small"
+                                            href="">DENY</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {{/each}}</div>
+                </li>
+                <li>
+                    <div id="post-job-form" class="collapsible-header"><i class="material-icons">build</i>Post a Job</div>
                     <div class="collapsible-body">
                         <span>
                             <div class="row">
@@ -157,9 +173,9 @@
                                             <label for="task-ctg">Category</label>
                                         </div>
                                     </div>
-                    
-                                        <button id="post-job">send</button>
-                                    
+
+                                    <button id="post-job" class="#33691e light-green darken-4 waves-effect waves-light btn-small">SUBMIT</button>
+
                                 </form>
                             </div>
                         </span>
@@ -203,7 +219,7 @@
                 </li> --}}
             </ul>
 
-            <button id ="sign-out">Sign out</button>
+            <button id="sign-out" class="#33691e light-green darken-4 waves-effect waves-light btn-small">SIGN OUT</button>
 
         </div>
     </div>
