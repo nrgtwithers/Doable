@@ -181,13 +181,13 @@ $("#jobs-requested").on("click", function () {
 
 //doer, view job hirer
 $("#pop-jobs-requested").on("click", "#view-owner-button", function () {
+  $("#pop-hirer").empty()
   var id = this.value
   $.ajax("/api/user/view", {
     type: "POST",
     data: { id: id }
   }).then(function (hirer) {
     console.log(hirer)
-    $("#pop-hirer").empty()
     $("#pop-hirer").append("<h4>Task Hirer</h4>")
     $("#pop-hirer").append(`<p class="title">Name:</p> <p class="info">${hirer.name}</p>`)
     $("#pop-hirer").append(`<p class="title">Location:</p> <p class="info">${hirer.location}</p>`)
@@ -203,6 +203,7 @@ $("#pop-jobs-requested").on("click", "#drop-button", function () {
     data: { id: id, requested: false ,vacant: true , doer: 0 }
   }).then(function (data) {
     console.log("updated");
+    alert("Job dropped!")
   });
 });
 

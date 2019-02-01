@@ -67,7 +67,8 @@ $("#sign-up").on("click", function (event) {
           name: $("#new-name").val().trim(),
           contact: $("#new-contact").val().trim(),
           email: email.val().trim(),
-          password: password.val().trim()
+          password: password.val().trim(),
+          location: $("#new-location").val().trim()
       }
 
       if (!newUser.email || !newUser.password) {
@@ -141,3 +142,23 @@ var passwordInput = $("#password-login");
         })
     }
 //---------------------------------------------------------------------------------------
+$("#search-tasks").on("click",function(){
+    var title = $("#home-search").val().trim()
+    $("#search-results").empty()
+    console.log(title)
+    $.post("/api/tasks/search",{
+        title: title
+    }).then(function(data){
+        console.log(data)
+        html = "<h5>Search Results:</h5>";
+        html += "<hr>"
+        for (var i=0; i<data.length; i++){
+            html += `<p>Job: ${data[i].title}</p>`
+            html += `<p>Description: ${data[i].description}</p>`
+            html += `<p>Pay: $${data[i].rateOfPay}/Hour</p>`
+            html += `<p>Location: ${data[i].location}</p>`
+            html += "<hr>"
+        }
+        $("#search-results").append(html)
+    })
+ })

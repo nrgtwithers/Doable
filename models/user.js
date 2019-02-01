@@ -9,8 +9,7 @@ module.exports = function (sequelize, DataTypes) {
         },
         location: {
             type: DataTypes.STRING,
-            allowNull: true,
-            defaultValue: "DC"
+            allowNull: false,
         },
         contact: {
             type: DataTypes.STRING,

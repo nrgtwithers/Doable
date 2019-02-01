@@ -129,9 +129,9 @@
 		</div>
 		<div class="iris">
 			<div class="card transparent z-depth-5">
-				<div class="search">
+				<div class="search" id="search-div">
 					<h1>Find a Doer</h1>
-					<input class="searchbar #ffffff white" type="text" placeholder="  What do you need done?">
+					<input class="searchbar #ffffff white" type="text" placeholder="  What do you need done?" id="home-search">
 					<button id="search-tasks" class="btn waves-effect waves-light btn-medium #4caf50 green modal-trigger" type="submit"
 					 name="action" href="#modal3">
 						<i class="fas fa-search"></i>
@@ -143,7 +143,8 @@
 					<!-- Modal Structure -->
 					<div id="modal3" class="modal">
 						<div class="modal-content">
-							<h5>Search Results:</h5>
+							<div id="search-results">
+							</div>
 							{{!-- <p class="searchdoer">A bunch of text</p> --}}
 						</div>
 						<div class="modal-footer">
