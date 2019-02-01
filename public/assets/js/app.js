@@ -10,14 +10,12 @@ fileUpload.addEventListener("change", function (event) {
     var formData = new FormData();
     formData.append('file', file);
     formData.append('upload_preset', CLOUDINARY_UPLOAD_PRESET);
-    // now that we got all our file properties as an object
-    // we want to send it to cloudinary 
-    // security issue ?!
+
     axios({
         url: CLOUDINARY_URL,
         method: 'POST',
         headers: {
-            'Content-Type': 'application/x-www-form-urlencoded' // we aren't sedning json
+            'Content-Type': 'application/x-www-form-urlencoded'
         },
         data: formData
     }).then(function (res) {
