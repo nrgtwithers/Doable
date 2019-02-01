@@ -28,10 +28,10 @@ $("#jobs-by-area").on("click", function () {
     var html = `<h4> Tasks in ${location} </h4>`
     html += `<hr>`
     for (var i = 0; i < data.length; i++) {
-      html += `<p>Title: ${data[i].title}</p>`
-      html += `<p>Description: ${data[i].description}</p>`
-      html += `<p>Pay: $${data[i].rateOfPay}/hour</p>`
-      html += `<button id="request-task" class="#33691e light-green darken-4 waves-effect waves-light btn-small" value="${data[i].id}">Take it</button>`
+      html += `<p class='title'>Title:</p> <p class='info'>${data[i].title}</p>`
+      html += `<p class='title'>Description:</p> <p class='info'>${data[i].description}</p>`
+      html += `<p class='title'>Pay:</p> <p class='info'>$${data[i].rateOfPay}/hour</p>`
+      html += `<button id="request-task" value="${data[i].id}">Take it</button>`
       html += `<hr>`
     }
     $("#pop-tasks").append(html);
@@ -63,20 +63,20 @@ $("#current-job-status").on("click", function () {
     var html = `<h4>Jobs you posted</h4>`;
     html += `<hr>`
     for (var i = 0; i < data.length; i++) {
-      html += `<p>Title: ${data[i].title}</p>`
+      html += `<p class='title'>Title:</p> <p class='info'>${data[i].title}</p>`
       if (data[i].vacant) {
-        html += `<p>Status: Vacant</p>`
+        html += `<p class='title'>Status:</p> <p class='info'>Vacant</p>`
         html += `<button id ="complete-button" value="${data[i].id}">Complete</button>`
       } else if (data[i].requested) {
-        html += `<p>Status: Requested</p>`
-        html += `<p>Requesting Doer Id: ${data[i].doer} </p>`
-        html += `<button id ="accept-button" class="#33691e light-green darken-4 waves-effect waves-light btn-small" value="${data[i].id}">Accept Request</button>`
-        html += `<button id ="view-doer-button" class="#33691e light-green darken-4 waves-effect waves-light btn-small" value="${data[i].doer}">View Doer</button>`
-        html += `<button id ="decline-button" class="#33691e light-green darken-4 waves-effect waves-light btn-small" value="${data[i].id}">Decline</button>`
+        html += `<p class='title'>Status:</p> <p class='info'>Requested</p>`
+        html += `<p class='title'>Requesting Doer Id:</p> <p class='info'>${data[i].doer} </p>`
+        html += `<button id ="accept-button" class="#FFFFFF white  waves-effect waves-light btn-small" value="${data[i].id}">Accept Request</button>`
+        html += `<button id ="view-doer-button" class="#FFFFFF white  waves-effect waves-light btn-small" value="${data[i].doer}">View Doer</button>`
+        html += `<button id ="decline-button" class="#FFFFFF white waves-effect waves-light btn-small" value="${data[i].id}">Decline</button>`
       } else if (data[i].inProgress) {
-        html += `<p>Status: Requested</p>`
-        html += `<p>Doer: ${data[i].doer} </p>`
-        html += `<button id ="complete-button" class="#33691e light-green darken-4 waves-effect waves-light btn-small" value="${data[i].id}">Complete</button>`
+        html += `<p class='title'>Status:</p> <p class='info'>Requested</p>`
+        html += `<p class='title'>Doer:</p> <p classs='info'>${data[i].doer}</p>`
+        html += `<button id ="complete-button" class="#FFFFFF white waves-effect waves-light btn-small" value="${data[i].id}">Complete</button>`
       }
       html += `<hr>`
     }
@@ -128,10 +128,10 @@ $("#pop-current-tasks").on("click", "#view-doer-button", function(){
     }
   }).then(function(doer){
   $("#pop-requesting-doer").empty();
-  $("#pop-requesting-doer").append("<h5>Pending Doer</h5>");
-  $("#pop-requesting-doer").append(`<p> Name: ${doer.name}</p>`);
-  $("#pop-requesting-doer").append(`<p> Location: ${doer.location}</p>`);
-  $("#pop-requesting-doer").append(`<p> Contact: ${doer.contact}</p>`);
+  $("#pop-requesting-doer").append("<h4>Pending Doer</h4>");
+  $("#pop-requesting-doer").append(`<p class="title">Name:</p> <p class="info">${doer.name}</p>`);
+  $("#pop-requesting-doer").append(`<p class="title">Location:</p> <p class="info">${doer.location}</p>`);
+  $("#pop-requesting-doer").append(`<p class="title">Contact:</p> <p class="info">${doer.contact}</p>`);
 console.log(doer)
 
   })
@@ -164,15 +164,15 @@ $("#jobs-requested").on("click", function () {
     var html = `<h4>Jobs you Requested</h4>`;
     html += `<hr>`
     for (var i = 0; i < data.length; i++) {
-      html += `<p>Title: ${data[i].title}</p>`
+      html += `<p class="title">Title:</p> <p class="info">${data[i].title}</p>`
       if (data[i].requested){
-        html += `<p>Status: Request is pending </p>`
+        html += `<p class="title">Status:</p> <p class="info">Request is pending </p>`
       };
       if (data[i].inProgress){
-        html += `<p>Status: Job in progress</p>`
+        html += `<p class="title">Status:</p> <p class="info">Job in progress</p>`
       }
-      html += `<button id ="drop-button" class="#33691e light-green darken-4 waves-effect waves-light btn-small" value="${data[i].id}">Drop Job</button>`
-      html += `<button id ="view-owner-button" class="#33691e light-green darken-4 waves-effect waves-light btn-small" value="${data[i].UserId}">View Hirer</button>`
+      html += `<button id ="drop-button" class="#FFFFFF white waves-effect waves-light btn-small" value="${data[i].id}">Drop Job</button>`
+      html += `<button id ="view-owner-button" class="#FFFFFF white waves-effect waves-light btn-small" value="${data[i].UserId}">View Hirer</button>`
       html += `<hr>`
     }
     $("#pop-jobs-requested").append(html)
@@ -188,10 +188,10 @@ $("#pop-jobs-requested").on("click", "#view-owner-button", function () {
   }).then(function (hirer) {
     console.log(hirer)
     $("#pop-hirer").empty()
-    $("#pop-hirer").append("<h5>Task Hirer</h5>")
-    $("#pop-hirer").append(`<p>Name: ${hirer.name}`)
-    $("#pop-hirer").append(`<p>Location: ${hirer.location}`)
-    $("#pop-hirer").append(`<p>Contact: ${hirer.contact}`)
+    $("#pop-hirer").append("<h4>Task Hirer</h4>")
+    $("#pop-hirer").append(`<p class="title">Name:</p> <p class="info">${hirer.name}</p>`)
+    $("#pop-hirer").append(`<p class="title">Location:</p> <p class="info">${hirer.location}</p>`)
+    $("#pop-hirer").append(`<p class="title">Contact:</p> <p class="info">${hirer.contact}</p>`)
   })
 });
 
@@ -308,7 +308,7 @@ $("#find-a-job").on("click", function (event) {
     }
   }).then(function (data) {
     $("#jobs-results").empty();
-    $("#jobs-results").append(`<h5>Possible Jobs for you!</h5>`);
+    $("#jobs-results").append(`<h4>Possible Jobs for you!</h4>`);
     $("#jobs-results").append(`<hr>`)
     for(var i=0; i<data.length; i++){
       $("#jobs-results").append(`<p>Title: ${data[i].title}</p>`);

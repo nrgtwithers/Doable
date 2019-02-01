@@ -118,7 +118,7 @@ form {
   padding: 20px !important;
 }
 
-h3 {
+h3, h4 {
   text-align: center;
   color: white;
   font-family: "Pacifico", cursive;
@@ -270,4 +270,25 @@ hr{
 .userpic{
   max-width: 250px;
   max-height: 250px
+}
+
+p.title{
+  font-weight: bold;
+  color: white;
+}
+p.info{
+  color: white;
+}
+
+button#request-task{
+  background-color: white !important;
+  color: #7ed957 !important;
+  padding: 5px;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+button#accept-button, button#view-doer-button, button#decline-button, button#drop-button, button#view-owner-button,button#complete-button{
+  color: #7ed957 !important;
+  font-weight:bold;
 }
