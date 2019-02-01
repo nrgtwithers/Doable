@@ -159,11 +159,25 @@ h3, h4 {
   color: #ffcc00;
 }
 
-  h6{
-      color: white;
-  }
+p.title2{
+  font-family: "Barlow", arial;
+  color: #ffcc0031;
+  font-weight: bold;
+}
+
+p.info2{
+  font-family: "Barlow", arial;
+  color: #ffcc0031;
+}
 
   h5{
+    font-family: "Barlow", arial;
+    font-weight: bold;
+    color: #ffcc00;
+    text-align: center;
+  }
+
+  .noAccount{
     color: black;
     font-size: 15px;
   }

@@ -308,14 +308,14 @@ $("#find-a-job").on("click", function (event) {
     }
   }).then(function (data) {
     $("#jobs-results").empty();
-    $("#jobs-results").append(`<h4>Possible Jobs for you!</h4>`);
+    $("#jobs-results").append(`<h5>Possible Jobs for you!</h5>`);
     $("#jobs-results").append(`<hr>`)
     for(var i=0; i<data.length; i++){
-      $("#jobs-results").append(`<p>Title: ${data[i].title}</p>`);
-      $("#jobs-results").append(`<p>Description: ${data[i].description}</p>`);
-      $("#jobs-results").append(`<p>Pay: $${data[i].rateOfPay}/Hour</p>`);
-      $("#jobs-results").append(`<p>Location: ${data[i].location}</p>`);
-      $("#jobs-results").append(`<button class="#33691e light-green darken-4 waves-effect waves-light btn-small" >Take it</button>`);
+      $("#jobs-results").append(`<p class="title2">Title:</p> <p class="info2">${data[i].title}</p>`);
+      $("#jobs-results").append(`<p class="title2">Description:</p> <p class="info2">${data[i].description}</p>`);
+      $("#jobs-results").append(`<p class="title2">Pay</p> <p class="info2">$${data[i].rateOfPay}/Hour</p>`);
+      $("#jobs-results").append(`<p class="title2">Location:</p> <p class="info2">${data[i].location}</p>`);
+      $("#jobs-results").append(`<button class="#33691e light-green darken-4 waves-effect waves-light btn-small">Take it</button>`);
       $("#jobs-results").append(`<hr>`);
     }
     console.log(data)
@@ -337,9 +337,9 @@ $.ajax("/api/user/search",{
   html = `<h5> Doers </h5>`
   html += `<hr>`
   for(var i=0; i< doers.length; i++){
-html+= `<p>Name: ${doers[i].name} </p>`
-html += `<p>Location: ${doers[i].location}</p>`
-html+= `<p>Contact: ${doers[i].contact}</p>`
+html+= `<p class="title2">Name:</p> <p class="info2">${doers[i].name} </p>`
+html += `<p class="title2">Location:</p> <p class="info2">${doers[i].location}</p>`
+html+= `<p class="title2">Contact:</p> <p class="info2">${doers[i].contact}</p>`
 html+=`<hr>`
   }
   $("#search-results").append(html)
