@@ -3,7 +3,7 @@
 
         <h2 id="user-name">Welcome</h2>
 
-        {{!-- <img src="{{img.url}}" class="userpic" /> --}}
+        <img id ="img-preview" src="http://www.buckinghamandcompany.com.au/wp-content/uploads/2016/03/profile-placeholder.png" class="userpic" />
 
         <p>Please choose from one of the following:</p>
 
@@ -22,6 +22,10 @@
                         / Edit your
                         Profile</div>
                     <div class="collapsible-body">
+                        <label class="file-upload-container" for="file-upload">
+                            <input id="file-upload" type="file" style="display:none;">
+                            Update Profile Photo
+                        </label>
                         <form class="col s12">
                             <div class="row">
                                 <div class="input-field col s12">
@@ -85,7 +89,7 @@
                                         <p>Description: {{task.description}}</p>
                                         <p>Location: {{task.location}}</p>
                                         <p>Status: {{task.status}}</p> --}}
-                                
+
                                     </div>
                                 </div>
                             </div>
@@ -115,7 +119,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="collapsible-header"><i class="material-icons">face</i>Find a Job</div>
+                    <div class="collapsible-header" id="jobs-search"><i class="material-icons">face</i>Find a Job</div>
                     <div class="collapsible-body"><span>
                             <div class="search">
                                 <h5>Find a Job</h5>
@@ -129,7 +133,7 @@
                                 <div id="modal5" class="modal">
                                     <div class="modal-content">
                                         <div id="jobs-results">
-                                        </div> 
+                                        </div>
                                     </div>
                                     <div class="modal-footer">
                                         <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
@@ -249,7 +253,7 @@
                                         <p>Location: {{task.location}}</p>
                                         <p>Status: {{task.status}}</p> --}}
                                         <!-- Modal Structure -->
-                                        
+
                                     </div>
                                 </div>
                             </div>
@@ -262,7 +266,7 @@
                                         <p>Location: {{task.location}}</p>
                                         <p>Status: {{task.status}}</p> --}}
                                         <!-- Modal Structure -->
-                                        
+
                                     </div>
                                 </div>
                             </div>

@@ -251,11 +251,9 @@ textarea#edit-specialty, textarea#edit-contact, textarea#edit-location, textarea
 
 #search-results {
   color: black;
+  font-size: 20px
 }
 #jobs-results{
   color: black;
   font-size: 20px
-
-hr{
-  border-color: #7ed957;
 }
