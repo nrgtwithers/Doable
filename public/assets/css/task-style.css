@@ -251,6 +251,7 @@ textarea#edit-specialty, textarea#edit-contact, textarea#edit-location, textarea
 
 #search-results {
   color: black;
+  font-size: 20px
 }
 #jobs-results{
   color: black;
@@ -264,4 +265,9 @@ hr{
 .upload{
   max-width: 300px;
   margin: auto;
+}
+
+.userpic{
+  max-width: 250px;
+  max-height: 250px
 }

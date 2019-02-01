@@ -17,6 +17,7 @@ $("#sign-out2").on("click", function () {
 
 // jobs by area for doer 
 $("#jobs-by-area").on("click", function () {
+  $("#pop-tasks").empty();
   var location = localStorage.getItem('location');
   $.ajax("/api/tasks/location", {
     type: "POST",
@@ -29,7 +30,7 @@ $("#jobs-by-area").on("click", function () {
       html += `<p>Title: ${data[i].title}</p>`
       html += `<p>Description: ${data[i].description}</p>`
       html += `<p>Pay: $${data[i].rateOfPay}/hour</p>`
-      html += `<button id="request-task" value="${data[i].id}">Take it</button>`
+      html += `<button id="request-task" class="#33691e light-green darken-4 waves-effect waves-light btn-small" value="${data[i].id}">Take it</button>`
       html += `<hr>`
     }
     $("#pop-tasks").append(html);
@@ -66,13 +67,13 @@ $("#current-job-status").on("click", function () {
       } else if (data[i].requested) {
         html += `<p>Status: Requested</p>`
         html += `<p>Requesting Doer Id: ${data[i].doer} </p>`
-        html += `<button id ="accept-button" value="${data[i].id}">Accept Request</button>`
-        html += `<button id ="view-doer-button"" value="${data[i].doer}">View Doer</button>`
-        html += `<button id ="decline-button" value="${data[i].id}">Decline</button>`
+        html += `<button id ="accept-button" class="#33691e light-green darken-4 waves-effect waves-light btn-small" value="${data[i].id}">Accept Request</button>`
+        html += `<button id ="view-doer-button" class="#33691e light-green darken-4 waves-effect waves-light btn-small" value="${data[i].doer}">View Doer</button>`
+        html += `<button id ="decline-button" class="#33691e light-green darken-4 waves-effect waves-light btn-small" value="${data[i].id}">Decline</button>`
       } else if (data[i].inProgress) {
         html += `<p>Status: Requested</p>`
         html += `<p>Doer: ${data[i].doer} </p>`
-        html += `<button id ="complete-button" value="${data[i].id}">Complete</button>`
+        html += `<button id ="complete-button" class="#33691e light-green darken-4 waves-effect waves-light btn-small" value="${data[i].id}">Complete</button>`
       }
       html += `<hr>`
     }
@@ -150,6 +151,7 @@ $("#pop-current-tasks").on("click", "#decline-button", function(){
 })
 
 $("#jobs-requested").on("click", function () {
+  $("#pop-jobs-requested").empty();
   var id = localStorage.getItem('id');
   $.ajax("/api/user/request", {
     type: "POST",
@@ -166,8 +168,8 @@ $("#jobs-requested").on("click", function () {
       if (data[i].inProgress){
         html += `<p>Status: Job in progress</p>`
       }
-      html += `<button id ="drop-button" value="${data[i].id}">Drop Job</button>`
-      html += `<button id ="view-owner-button" value="${data[i].UserId}">View Hirer</button>`
+      html += `<button id ="drop-button" class="#33691e light-green darken-4 waves-effect waves-light btn-small" value="${data[i].id}">Drop Job</button>`
+      html += `<button id ="view-owner-button" class="#33691e light-green darken-4 waves-effect waves-light btn-small" value="${data[i].UserId}">View Hirer</button>`
       html += `<hr>`
     }
     $("#pop-jobs-requested").append(html)
@@ -310,7 +312,7 @@ $("#find-a-job").on("click", function (event) {
       $("#jobs-results").append(`<p>Description: ${data[i].description}</p>`);
       $("#jobs-results").append(`<p>Pay: $${data[i].rateOfPay}/Hour</p>`);
       $("#jobs-results").append(`<p>Location: ${data[i].location}</p>`);
-      $("#jobs-results").append(`<button>Take it</button>`);
+      $("#jobs-results").append(`<button class="#33691e light-green darken-4 waves-effect waves-light btn-small" >Take it</button>`);
       $("#jobs-results").append(`<hr>`);
     }
     console.log(data)
