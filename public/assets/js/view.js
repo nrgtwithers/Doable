@@ -68,7 +68,6 @@ $("#sign-up").on("click", function (event) {
           contact: $("#new-contact").val().trim(),
           email: email.val().trim(),
           password: password.val().trim(),
-          location: $("#new-location").val().trim()
       }
 
       if (!newUser.email || !newUser.password) {
