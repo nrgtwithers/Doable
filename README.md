@@ -4,7 +4,7 @@ GWU Full Stack Web Developer Bootcamp 2nd team project is a Heroku deployed app.
 
 ## Overview/How it works
 
-This project we created a website that allows users to create jobs at the rate they want the job done. It also allows other users who would like to earn money and work on their own time. On this site the users are allowed to be a doer or a hirer. They're able to rate each other as well. 
+This project we created a website that allows users to create jobs at the rate they want the job done. It also allows other users who would like to earn money and work on their own time. On this site the users are allowed to be a doer or a hirer. 
 
 See the demo of the app [here.](https://damp-chamber-66635.herokuapp.com/)
 
