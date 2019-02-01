@@ -319,3 +319,11 @@ button#accept-button, button#view-doer-button, button#decline-button, button#dro
   color: #7ed957 !important;
   font-weight:bold;
 }
+
+p.please{
+  text-align: center;
+}
+
+hr.user{
+  width: 85%;
+}
