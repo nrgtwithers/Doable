@@ -266,3 +266,8 @@ hr{
   max-width: 300px;
   margin: auto;
 }
+
+.userpic{
+  max-width: 250px;
+  max-height: 250px
+}
