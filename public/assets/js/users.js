@@ -52,6 +52,8 @@ $("#pop-tasks").on("click", "#request-task", function () {
 
 //hirer current job status
 $("#current-job-status").on("click", function () {
+  $("#pop-current-tasks").empty();
+  $("#pop-requesting-doer").empty();
   var id = localStorage.getItem('id');
   $.ajax("/api/tasks/status", {
     type: "POST",
