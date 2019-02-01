@@ -2,6 +2,7 @@
 $(document).ready(function () {
   var name = localStorage.getItem("name")
   $("#user-name").append(" " + name + "!");
+  $("#img-preview").attr("src",localStorage.getItem("imgurl"))
 });
 
 

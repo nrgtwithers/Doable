@@ -75,8 +75,8 @@ module.exports = function (app) {
         where: {
           id: req.body.id
         }
-      }).then(function (dbPost) {
-        res.json(dbPost);
+      }).then(function (data) {
+        res.json(data);
       });
   });
 
@@ -145,5 +145,18 @@ app.post("/api/user/search",function(req,res){
     res.json(doers)
   })
 })
+
+//update user profile photo
+app.put("/api/user/imgurl", function (req, res) {
+  db.User.update(
+    req.body,
+    {
+      where: {
+        id: req.body.id
+      }
+    }).then(function (dbPost) {
+      res.json(dbPost);
+    });
+});
 
 };

@@ -28,6 +28,10 @@ module.exports = function (sequelize, DataTypes) {
             type: DataTypes.STRING,
             allowNull: false,
         },
+        imgUrl: {
+            type: DataTypes.STRING,
+            allowNull: true,
+        },
         // jobsHiring: {
         //     type: DataTypes.INTEGER,
         //     allowNull: true,

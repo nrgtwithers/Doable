@@ -22,7 +22,16 @@ fileUpload.addEventListener("change", function (event) {
         data: formData
     }).then(function (res) {
         console.log(res);
-        imgPreview.src= res.data.secure_url;
+        imgPreview.src = res.data.secure_url;
+        $.ajax("api/user/imgurl", {
+            type: "PUT",
+            data: {
+                id: localStorage.getItem("id"),
+                imgUrl: res.data.secure_url
+            }
+        }).then(function () {
+            console.log("img saved")
+        })
     }).catch(function (err) {
         console.error(err);
     })
