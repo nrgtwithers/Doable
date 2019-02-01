@@ -155,6 +155,7 @@ $("#pop-current-tasks").on("click", "#decline-button", function(){
 
 $("#jobs-requested").on("click", function () {
   $("#pop-jobs-requested").empty();
+  $("#pop-hirer").empty()
   var id = localStorage.getItem('id');
   $.ajax("/api/user/request", {
     type: "POST",
